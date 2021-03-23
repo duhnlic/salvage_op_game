@@ -22,22 +22,32 @@ diceRoll = () => {
 
 
 // When the player starts the game the buttons will disappear and a new Character Selection window pops up
-class Player {
-    constructor(occupation) {
-        this.occupation = occupation;
-        this.health = 100;
-        this.inventory = {
-            supplies: [],
-            weapons: []
-        };
-    }
-    throwDice() {
-        return diceRoll();
-    };
-
+//create an object for my npc
+const npc = {
+    name: "Kay Tolen",
+    health: 75,
+    alive: "true"
 }
 
-//create the player ship at the end
+//create an object for my player
+const player = {
+    health: 100,
+    supplies: [],
+    weapons: [],
+    throwDice() {
+        return diceRoll();
+    }
+}
+
+//create a class for my occupations for my user
+const occupation = {
+    'medic': npc.health += 5,
+    'engineer': (npc.health += 20) && (player.health += 20),
+    'pilot': (npc.health -= 10) && (player.heath -= 10),
+    'loadmaster': (npc.health -= 10) && (player.health += 10),
+}
+
+//create the player ship at the end(GAME BONUS)
 const playerShip = {
     name: "The Picus",
     health: 100,
@@ -45,9 +55,10 @@ const playerShip = {
     throwDice() {
         return diceRoll();
     }
+
 }
 
-//create first class for main enemies
+//create class for main enemies
 class Drone {
     constructor(name) {
         this.name = name;
@@ -61,18 +72,14 @@ class Drone {
 
 //create bonus enemy
 const pirateShip = {
-        name: "The Cybelle",
-        health: 150,
-        hitpoints: 30,
-        throwDice() {
-            return diceRoll();
-        }
+    name: "The Cybelle",
+    health: 150,
+    hitpoints: 30,
+    throwDice() {
+        return diceRoll();
     }
-    //create my player character options
-    // const medic = new Player('medic');
-    // const engineer = new Player('engineer');
-    // const pilot = new Player('pilot');
-    // const loadmaster = new Player('loadmaster');
+}
+
 
 //create my enemies
 const drone1 = new Drone('drone1');
@@ -91,20 +98,73 @@ class Weapon {
 
 const sideArm = new Weapon('Walther P88 Compact', '30');
 const shockBaton = new Weapon('Shock Baton', '20');
-const guy = new Player('medic');
-guy.inventory.weapons.push(shockBaton);
-console.log(guy.inventory.weapons[0].hitpoints)
-    //create a battle function
-const battleCore = () => {
-    while (Player.health && Drone.health >= 100) {
-        if (Player.roll >= 4) {
-            Drone.health -= .inventory.weapons[1]
-        }
-    }
 
+player.weapons.push(shockBaton);
+console.log(player.weapons[0].hitpoints)
+
+// create a battle function
+const playerBattleCore = () => {
+    if (player.health && this.health > 0) {
+        if (player.throwDice >= 4) {
+            this.health -= player.weapons[0].hitpoints;
+            console.log(`Drone is at ${this.health} HP`);
+        } else {
+            console.log(`You missed! Fuck!`)
+        }
+    } else {
+
+    }
+}
+
+
+
+const aiBattleCore = () => {
+    if (player.health && this.health > 0) {
+        if (this.throwDice >= 5) {
+            player.health -= this.hitpoints;
+            console.log(`Your health is at ${player.health} HP`);
+        } else {
+            console.log(`It's a miss! That was too close for comfort...`)
+        }
+    } else {
+
+    }
+}
+
+
+
+const gameBattle = () => {
+    //if button click is true
+    //run aiBattleCore
+    //set button click to false
 
 }
 
+
+//create a function for my hidden health regeneration
+const healthRegen = () => {
+    if (player.heath < 100) {
+        player.health = 100
+        console.log(`Oh Thank God! You've found a med-kit! Your health is at ${player.health} HP`)
+    } else {
+        consnsole.log(`You already have full health.`)
+    }
+}
+
+//create a function for my reactor start up procedures
+const reactorNote = () => {
+    player.supplies.push("note")
+}
+
+//create a function for my command deck password
+const picusPassword = () => {
+    player.supplies.push("password");
+}
+
+//test my functions
+reactorNote();
+picusPassword();
+console.log(player.supplies);
 
 // const engage1 = () => {
 
