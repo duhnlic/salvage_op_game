@@ -1,3 +1,11 @@
+//CACHED HTML ELEMENTS
+
+
+diceRoll = () => {
+    return Math.ceil(Math.random() * 9)
+}
+
+// console.log(diceRoll());
 // The webpage opens with an initialize game button that has an event listener that will ‘load’ the game and bring up the game menu
 
 
@@ -14,6 +22,78 @@
 
 
 // When the player starts the game the buttons will disappear and a new Character Selection window pops up
+class Player {
+    constructor(name, accuracy) {
+        this.name = name;
+        this.health = 100;
+        this.accuracy = accuracy;
+        this.inventory = [
+            this.supplies = [],
+            this.weapons = []
+        ];
+    }
+    throwDice() {
+        return diceRoll();
+    };
+
+}
+
+//create the player ship at the end
+const playerShip = {
+        name: "The Picus",
+        health: 100,
+        accuracy: (Math.floor(Math.random() * 5) + 2),
+        hitpoint: 30,
+        throwDice() {
+            return diceRoll();
+        }
+    }
+    //create first class for main enemies
+class Drone {
+    constructor(name) {
+        this.name = name;
+        this.health = 100;
+        this.accuracy = (Math.floor((Math.random() * 3) + 6) * 0.1).toFixed(1);
+        this.hitpoints = 15;
+    }
+    throwDice() {
+        return diceRoll();
+    };
+}
+
+//create bonus enemy
+const pirateShip = {
+        name: "The Cybelle",
+        health: 150,
+        accuracy: (Math.floor(Math.random() * 3)),
+        hitpoints: 30,
+        throwDice() {
+            return diceRoll();
+        }
+    }
+    //create my player character options
+const medic = new Player('medic', '.4');
+const engineer = new Player('engineer', '.7');
+const pilot = new Player('pilot', '1');
+const loadmaster = new Player('loadmaster', '.5');
+
+//create my enemies
+const drone1 = new Drone('drone1', '.');
+const drone2 = new Drone('drone2');
+const drone3 = new Drone('drone3');
+
+//test being able to adjust hit points for larger battle
+
+//create a weapon for the character to have/find
+class Weapon {
+    constructor(name, hitpoints) {
+        this.name = name;
+        this.hitpoints = hitpoints;
+    }
+}
+
+const sideArm = new Weapon('Walther P88 Compact', '30');
+const shockBaton = new Weapon('Shock Baton', '20');
 // Once the character is selected, potentially a basic animation of a ship will paint the scene for the player.
 // A dialog box will animate text typing and will tell the player of the beginning of the story. 
 
@@ -54,7 +134,9 @@
 
 // Player will be able to explore the ship in sequential order of open hatches. 
 // Player will go from AIRLOCKS>CARGO>ENGINEERING>CREWD3>CREWD2>CREWD1>GALLEY>COMMAND>CARGO>(OPTIONAL)ENGINEERING>COMMAND
+const gameCore = () => {
 
+}
 
 // 3 drones are on board the ship. 1 in the command deck. 1 in engineering. And one patrolling the man shaft.
 // Random chance of running into the shaft drones while moving from room to room. 
