@@ -23,14 +23,13 @@ diceRoll = () => {
 
 // When the player starts the game the buttons will disappear and a new Character Selection window pops up
 class Player {
-    constructor(name, accuracy) {
-        this.name = name;
+    constructor(occupation) {
+        this.occupation = occupation;
         this.health = 100;
-        this.accuracy = accuracy;
-        this.inventory = [
-            this.supplies = [],
-            this.weapons = []
-        ];
+        this.inventory = {
+            supplies: [],
+            weapons: []
+        };
     }
     throwDice() {
         return diceRoll();
@@ -40,20 +39,19 @@ class Player {
 
 //create the player ship at the end
 const playerShip = {
-        name: "The Picus",
-        health: 100,
-        accuracy: (Math.floor(Math.random() * 5) + 2),
-        hitpoint: 30,
-        throwDice() {
-            return diceRoll();
-        }
+    name: "The Picus",
+    health: 100,
+    hitpoint: 30,
+    throwDice() {
+        return diceRoll();
     }
-    //create first class for main enemies
+}
+
+//create first class for main enemies
 class Drone {
     constructor(name) {
         this.name = name;
         this.health = 100;
-        this.accuracy = (Math.floor((Math.random() * 3) + 6) * 0.1).toFixed(1);
         this.hitpoints = 15;
     }
     throwDice() {
@@ -65,20 +63,19 @@ class Drone {
 const pirateShip = {
         name: "The Cybelle",
         health: 150,
-        accuracy: (Math.floor(Math.random() * 3)),
         hitpoints: 30,
         throwDice() {
             return diceRoll();
         }
     }
     //create my player character options
-const medic = new Player('medic', '.4');
-const engineer = new Player('engineer', '.7');
-const pilot = new Player('pilot', '1');
-const loadmaster = new Player('loadmaster', '.5');
+    // const medic = new Player('medic');
+    // const engineer = new Player('engineer');
+    // const pilot = new Player('pilot');
+    // const loadmaster = new Player('loadmaster');
 
 //create my enemies
-const drone1 = new Drone('drone1', '.');
+const drone1 = new Drone('drone1');
 const drone2 = new Drone('drone2');
 const drone3 = new Drone('drone3');
 
@@ -94,6 +91,24 @@ class Weapon {
 
 const sideArm = new Weapon('Walther P88 Compact', '30');
 const shockBaton = new Weapon('Shock Baton', '20');
+const guy = new Player('medic');
+guy.inventory.weapons.push(shockBaton);
+console.log(guy.inventory.weapons[0].hitpoints)
+    //create a battle function
+const battleCore = () => {
+    while (Player.health && Drone.health >= 100) {
+        if (Player.roll >= 4) {
+            Drone.health -= .inventory.weapons[1]
+        }
+    }
+
+
+}
+
+
+// const engage1 = () => {
+
+//     }
 // Once the character is selected, potentially a basic animation of a ship will paint the scene for the player.
 // A dialog box will animate text typing and will tell the player of the beginning of the story. 
 
