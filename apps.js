@@ -1,4 +1,17 @@
 //CACHED HTML ELEMENTS
+// const battleModal1 = document.querySelector('.battle-modal1');
+// const battleModal2 = document.queryselector('.battle-modal2');
+// const commandModal = document.querySelector('#command-modal');
+// const galleyModal = document.querySelector('#galley-modal');
+// const crew1Modal = document.querySelector('#crew1-modal');
+// const crew2Modal = document.querySelector('#crew2-modal');
+// const crew3Modal = document.querySelector('#crew3-modal');
+// const airlockModal = document.querySelector('#airlock-modal');
+// const cargoModal = document.querySelector('#cargo-modal');
+// const engineeringModal = document.querySelector('#engineering-modal');
+// const reactorStartModal = document.querySelector('#reactor-startup-modal');
+// const commandPwModal = document.querySelector('#command-password-modal');
+
 
 
 diceRoll = () => {
@@ -22,6 +35,15 @@ diceRoll = () => {
 
 
 // When the player starts the game the buttons will disappear and a new Character Selection window pops up
+
+
+
+
+
+
+
+
+
 //create an object for my npc
 const npc = {
     name: "Kay Tolen",
@@ -34,28 +56,22 @@ const player = {
     health: 100,
     supplies: [],
     weapons: [],
-    throwDice() {
-        return diceRoll();
-    }
+
 }
 
 //create a class for my occupations for my user
-const occupation = {
-    'medic': npc.health += 5,
-    'engineer': (npc.health += 20) && (player.health += 20),
-    'pilot': (npc.health -= 10) && (player.heath -= 10),
-    'loadmaster': (npc.health -= 10) && (player.health += 10),
-}
+// const occupation = {
+//     medic: npc.health += 5,
+//     engineer: (npc.health += 20) && (player.health += 20),
+//     pilot: (npc.health -= 10) && (player.health -= 10),
+//     loadmaster: (npc.health -= 10) && (player.health += 10),
+// }
 
 //create the player ship at the end(GAME BONUS)
 const playerShip = {
     name: "The Picus",
     health: 100,
     hitpoint: 30,
-    throwDice() {
-        return diceRoll();
-    }
-
 }
 
 //create class for main enemies
@@ -64,29 +80,25 @@ class Drone {
         this.name = name;
         this.health = 100;
         this.hitpoints = 15;
+        this.alive = 'true';
     }
-    throwDice() {
-        return diceRoll();
-    };
-}
 
-//create bonus enemy
-const pirateShip = {
-    name: "The Cybelle",
-    health: 150,
-    hitpoints: 30,
-    throwDice() {
-        return diceRoll();
-    }
 }
-
 
 //create my enemies
 const drone1 = new Drone('drone1');
 const drone2 = new Drone('drone2');
 const drone3 = new Drone('drone3');
 
-//test being able to adjust hit points for larger battle
+const droneArray = [drone1, drone2, drone3];
+
+//create bonus enemy
+const pirateShip = {
+    name: "The Cybelle",
+    health: 150,
+    hitpoints: 30,
+
+}
 
 //create a weapon for the character to have/find
 class Weapon {
@@ -99,53 +111,69 @@ class Weapon {
 const sideArm = new Weapon('Walther P88 Compact', '30');
 const shockBaton = new Weapon('Shock Baton', '20');
 
+
+
+
+
+
+
+
+
+//test
 player.weapons.push(shockBaton);
 console.log(player.weapons[0].hitpoints)
 
+
+
 // create a battle function
 const playerBattleCore = () => {
-    if (player.health && this.health > 0) {
-        if (player.throwDice >= 4) {
-            this.health -= player.weapons[0].hitpoints;
-            console.log(`Drone is at ${this.health} HP`);
+    if ((player.health > 0) && (droneArray[0].health > 0)) {
+        diceRoll();
+        if (diceRoll() >= 4) {
+            droneArray[0].health -= player.weapons[0].hitpoints;
+            console.log(`It's a Hit! Drone is at ${droneArray[0].health} HP`);
         } else {
             console.log(`You missed! Fuck!`)
         }
-    } else {
+    } else if ((player.health > droneArray[0].health) && (droneArray[0].health <= 0)) {
+        console.log(`You've survived`)
+        droneArray.pop();
 
     }
 }
-
 
 
 const aiBattleCore = () => {
-    if (player.health && this.health > 0) {
-        if (this.throwDice >= 5) {
-            player.health -= this.hitpoints;
-            console.log(`Your health is at ${player.health} HP`);
+    if ((player.health > 0) && (droneArray[0].health > 0)) {
+        diceRoll();
+        if (diceRoll() >= 6) {
+            player.health = (player.health - droneArray[0].hitpoints);
+            console.log(`Ouch! You're hit! Your health is at ${player.health} HP`);
         } else {
             console.log(`It's a miss! That was too close for comfort...`)
         }
-    } else {
-
+    } else if ((player.health < droneArray[0].health) && (player.health <= 0)) {
+        console.log(`You Are Dead. Game Over!`)
     }
 }
 
-
-
-const gameBattle = () => {
-    //if button click is true
-    //run aiBattleCore
-    //set button click to false
-
+const battleCore = () => {
+    playerBattleCore();
+    aiBattleCore();
 }
+
+battleCore();
+console.log(droneArray);
+
+
+
 
 
 //create a function for my hidden health regeneration
 const healthRegen = () => {
     if (player.heath < 100) {
         player.health = 100
-        console.log(`Oh Thank God! You've found a med-kit! Your health is at ${player.health} HP`)
+        console.log(`Oh Thank God! You've found a med-kit! Your health is now at ${player.health} HP`)
     } else {
         consnsole.log(`You already have full health.`)
     }
@@ -166,9 +194,8 @@ reactorNote();
 picusPassword();
 console.log(player.supplies);
 
-// const engage1 = () => {
 
-//     }
+
 // Once the character is selected, potentially a basic animation of a ship will paint the scene for the player.
 // A dialog box will animate text typing and will tell the player of the beginning of the story. 
 
@@ -209,27 +236,33 @@ console.log(player.supplies);
 
 // Player will be able to explore the ship in sequential order of open hatches. 
 // Player will go from AIRLOCKS>CARGO>ENGINEERING>CREWD3>CREWD2>CREWD1>GALLEY>COMMAND>CARGO>(OPTIONAL)ENGINEERING>COMMAND
-const gameCore = () => {
-
-}
-
+// The player’s goal is to power on the ship in order to take the loot in the Cargo hold (They will also get the choice to repair and take the ship if they would like.) 
 // 3 drones are on board the ship. 1 in the command deck. 1 in engineering. And one patrolling the man shaft.
 // Random chance of running into the shaft drones while moving from room to room. 
 // If player encounters drone and fails to beat drone, player gets a chance to roll or an escape, or the player dies. 
 // Randomly, at anytime while going from room to room in the main shaft, the player may encounter the attack drone. 
+// Potentially battling has it’s own atmospheric music.
 
 
-// Potentially each room has it’s own atmospheric music.
-// The player’s goal is to power on the ship in order to take the loot in the Cargo hold (They will also get the choice to repair and take the ship if they would like.) 
+const gameCore = () => {
+    // IF player in Airlock,
+    //show airlock div 
+    //show 'to cargo hold' button
+
+    // IF player in Cargo Hold, player encounters 2 dead pirates and the LOOT of the game.
+    //show pirate div
+    //show <p>
+    // loot is only accessible if the ship’s power is on. 
+    //Potentially one of the pirates has a PW on them for powering up the reactor
+
+}
 
 
-// IF player in Airlock, This is the starting room
-//External airlocks must be closed in order to power on the ship.
 
 
-// IF player in Cargo Hold, player encounters 2 dead pirates and the LOOT of the game.
-// loot is only accessible if the ship’s power is on. 
-//Potentially one of the pirates has a PW on them for powering up the reactor
+
+
+
 
 
 // IF player in engineering, 1 Drone. 
