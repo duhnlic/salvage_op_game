@@ -1,0 +1,12 @@
+%button-styles {
+    padding: 1.2rem 1rem;
+    border-radius: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: bolder;
+}
+
+@mixin buttonColors($color) {
+    background-color: $color;
+    border: .4rem solid darken($color, 85%);
+}

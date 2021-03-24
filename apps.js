@@ -1,16 +1,20 @@
 //CACHED HTML ELEMENTS
-// const battleModal1 = document.querySelector('.battle-modal1');
-// const battleModal2 = document.queryselector('.battle-modal2');
-// const commandModal = document.querySelector('#command-modal');
-// const galleyModal = document.querySelector('#galley-modal');
-// const crew1Modal = document.querySelector('#crew1-modal');
-// const crew2Modal = document.querySelector('#crew2-modal');
-// const crew3Modal = document.querySelector('#crew3-modal');
-// const airlockModal = document.querySelector('#airlock-modal');
-// const cargoModal = document.querySelector('#cargo-modal');
-// const engineeringModal = document.querySelector('#engineering-modal');
-// const reactorStartModal = document.querySelector('#reactor-startup-modal');
-// const commandPwModal = document.querySelector('#command-password-modal');
+const battleModal1 = document.querySelector('.battle-modal1');
+const battleModal2 = document.querySelector('.battle-modal2');
+const commandModal = document.querySelector('#command-modal');
+const galleyModal = document.querySelector('#galley-modal');
+const crew1Modal = document.querySelector('#crew1-modal');
+const crew2Modal = document.querySelector('#crew2-modal');
+const crew3Modal = document.querySelector('#crew3-modal');
+const airlockModal = document.querySelector('#airlock-modal');
+const cargoModal = document.querySelector('#cargo-modal');
+const engineeringModal = document.querySelector('#engineering-modal');
+const reactorStartModal = document.querySelector('#reactor-startup-modal');
+const commandPwModal = document.querySelector('#command-password-modal');
+// const testButton = document.querySelector('.test-button');
+const initMenu = document.querySelector('#init-menu')
+const initButton = document.querySelector('.init-button')
+const gameMenuModal = document.querySelector('.game-menu-modal');
 
 
 
@@ -68,11 +72,11 @@ const player = {
 // }
 
 //create the player ship at the end(GAME BONUS)
-const playerShip = {
-    name: "The Picus",
-    health: 100,
-    hitpoint: 30,
-}
+// const playerShip = {
+//     name: "The Picus",
+//     health: 100,
+//     hitpoint: 30,
+// }
 
 //create class for main enemies
 class Drone {
@@ -93,12 +97,12 @@ const drone3 = new Drone('drone3');
 const droneArray = [drone1, drone2, drone3];
 
 //create bonus enemy
-const pirateShip = {
-    name: "The Cybelle",
-    health: 150,
-    hitpoints: 30,
+// const pirateShip = {
+//     name: "The Cybelle",
+//     health: 150,
+//     hitpoints: 30,
 
-}
+// }
 
 //create a weapon for the character to have/find
 class Weapon {
@@ -162,10 +166,11 @@ const battleCore = () => {
     aiBattleCore();
 }
 
-battleCore();
-console.log(droneArray);
+// battleCore();
+// console.log(droneArray);
 
-
+//test my battle functions in the browswer with player input
+// testButton.addEventListener('click', battleCore);
 
 
 
@@ -190,9 +195,9 @@ const picusPassword = () => {
 }
 
 //test my functions
-reactorNote();
-picusPassword();
-console.log(player.supplies);
+// reactorNote();
+// picusPassword();
+// console.log(player.supplies);
 
 
 
@@ -301,3 +306,12 @@ const gameCore = () => {
 // Player will encounter and be attacked by a drone.
 // IF the player survives, they can use this deck to power on the ship and take control IF the player has already cleared the drone in the engineering bay and done repairs to the ship.
 //
+
+//EVENT LISTENERS
+
+
+initButton.addEventListener('click', () => {
+    initMenu.classList.add('close');
+    setTimeout(() => { gameMenuModal.classList.add('open'); }, 350);
+    //play menu music
+})

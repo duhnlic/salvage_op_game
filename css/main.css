@@ -1,5 +1,124 @@
+body button {
+  padding: 1.2rem 1rem;
+  border-radius: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: bolder;
+}
+
+* {
+  display: flex;
+  font-size: 10px;
+}
+
+#video-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translate(-50%, -50%);
+}
+
 body {
   background-color: black;
+}
+.init-menu-modal {
+  padding: 2rem;
+  height: 39.3rem;
+  width: 74.5rem;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  transform: translateX(-45%);
+  transform: translateY(-45%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 2500;
+  display: block;
+}
+.init-menu-modal .init-button {
+  background-color: #6b0303;
+  padding: 2.5rem 3rem 2.5rem 3rem;
+  margin: 10rem;
+  margin-right: 45rem;
+  cursor: pointer;
+  font-size: 8rem;
+  text-shadow: -0.1rem 0.1rem 0.4rem #000, 0.1rem 0.1rem 0.4rem #000, 0.1rem -0.1rem 0.4rem #000, -0.1rem -0.1rem 0.4rem #000;
+  letter-spacing: 0.65rem;
+  color: #e4e4e4;
+  border: silver;
+  border-radius: 2rem;
+  border: 0.5rem solid #7d8083;
+}
+
+.init-menu-modal.close {
+  display: none;
+}
+
+.game-menu-modal {
+  background-image: url(https://i.imgur.com/v89GyJ7.png);
+  background-position: center;
+  height: 43.5rem;
+  width: 62.5rem;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 2200;
+  display: none;
+}
+.game-menu-modal .main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+  padding: 4rem;
+  z-index: 1850;
+}
+.game-menu-modal button {
+  background-color: #50a997;
+  border: 0.4rem solid black;
+  margin: 3rem 2rem 3.5rem 2rem;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  letter-spacing: 0.65rem;
+  color: #e4e4e4;
+}
+
+.game-menu-modal.open {
+  display: block;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #video-bg {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  #video-bg {
+    width: auto;
+    height: 100%;
+  }
+}
+@media (max-width: 767px) {
+  #videoBG {
+    display: none;
+  }
+
+  body {
+    background: url("https://salvage-op.s3.us-east-2.amazonaws.com/The_Expanse_RPG_Background.m4v");
+    background-size: cover;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
