@@ -15,6 +15,14 @@ const commandPwModal = document.querySelector('#command-password-modal');
 const initMenu = document.querySelector('#init-menu')
 const initButton = document.querySelector('.init-button')
 const gameMenuModal = document.querySelector('.game-menu-modal');
+const videobgModal = document.querySelector('.videobg-modal');
+const startButton = document.querySelector('.start-button');
+const introModal = document.querySelector('.intro-modal');
+const ceresModal = document.querySelector('.ceres-modal');
+const shipGifModal = document.querySelector('.sip-gif-modal');
+const startShipModal = document.querySelector('.start-ship-modal')
+const introTextModal1 = document.querySelector('.intro-text-modal1');
+const introTextModal2 = document.querySelector('.intro-text-modal2');
 
 
 
@@ -314,4 +322,18 @@ initButton.addEventListener('click', () => {
     initMenu.classList.add('close');
     setTimeout(() => { gameMenuModal.classList.add('open'); }, 350);
     //play menu music
+})
+
+startButton.addEventListener('click', () => {
+    gameMenuModal.classList.remove('open');
+    setTimeout(() => { videobgModal.classList.add('close'); }, 350);
+    setTimeout(() => { introModal.classList.add('open'); }, 500);
+    ceresModal.classList.add('open');
+    introTextModal1.classList.add('open');
+    setTimeout(() => { introTextModal2.classList.add('open'); }, 5000);
+    setTimeout(() => { introTextModal1.classList.remove('open'); }, 5000);
+
+
+
+
 })

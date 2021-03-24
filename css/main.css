@@ -6,6 +6,18 @@ body button {
   font-weight: bolder;
 }
 
+.start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
+  height: 43.5rem;
+  width: 62.5rem;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
 * {
   display: flex;
   font-size: 10px;
@@ -24,7 +36,7 @@ body button {
 }
 
 body {
-  background-color: black;
+  background-image: url("https://salvage-op.s3.us-east-2.amazonaws.com/Starset.png");
 }
 .init-menu-modal {
   padding: 2rem;
@@ -32,19 +44,27 @@ body {
   width: 74.5rem;
   text-align: center;
   position: fixed;
-  top: 50%;
+  top: 35%;
   transform: translateX(-45%);
   transform: translateY(-45%);
   left: 0;
   right: 0;
   margin: 0 auto;
-  z-index: 2500;
+  z-index: 9500;
   display: block;
+}
+.init-menu-modal #game-logo {
+  display: flex;
+  justify-content: center;
+  width: 37.2rem;
+  padding: 5rem 0 0 0;
+  margin-left: 17.2rem;
+  z-index: 9000;
 }
 .init-menu-modal .init-button {
   background-color: #6b0303;
   padding: 2.5rem 3rem 2.5rem 3rem;
-  margin: 10rem;
+  margin: 0 10rem 10rem 10rem;
   margin-right: 45rem;
   cursor: pointer;
   font-size: 8rem;
@@ -63,16 +83,7 @@ body {
 .game-menu-modal {
   background-image: url(https://i.imgur.com/v89GyJ7.png);
   background-position: center;
-  height: 43.5rem;
-  width: 62.5rem;
-  text-align: center;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  z-index: 2200;
+  z-index: 9000;
   display: none;
 }
 .game-menu-modal .main-menu {
@@ -81,7 +92,7 @@ body {
   align-items: center;
   align-content: space-around;
   padding: 4rem;
-  z-index: 1850;
+  z-index: 8500;
 }
 .game-menu-modal button {
   background-color: #50a997;
@@ -95,6 +106,110 @@ body {
 }
 
 .game-menu-modal.open {
+  display: block;
+}
+
+.videobg-modal {
+  display: block;
+}
+
+.videobg-modal.close {
+  display: none;
+}
+
+.intro-modal {
+  height: 50rem;
+  width: 70rem;
+  z-index: 8500;
+  display: none;
+}
+.intro-modal .intro-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+}
+.intro-modal #cere-station {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0 0 3.46rem;
+  margin-left: 7.2rem;
+  transform: translateX(5%);
+  z-index: 8500;
+}
+.intro-modal #ship-gif {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0 0 3.46rem;
+  margin-right: 7.2rem;
+  transform: translateX(-100%);
+  z-index: 8500;
+}
+.intro-modal #start-ship {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 10rem 1.46rem;
+  margin-left: 2rem;
+  z-index: 8500;
+}
+
+.intro-modal.open {
+  display: block;
+}
+
+.ceres-modal {
+  display: none;
+}
+
+.ceres-modal.open {
+  display: block;
+}
+
+.intro-text-modal1 {
+  text-align: start;
+  height: 20rem;
+  width: 60rem;
+  transform: translateY(75%);
+  display: none;
+}
+.intro-text-modal1 #start-dialog {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+
+.intro-text-modal1.open {
+  display: block;
+}
+
+.intro-text-modal2 {
+  text-align: start;
+  height: 20rem;
+  width: 60rem;
+  transform: translateY(75%);
+  display: none;
+}
+.intro-text-modal2 #start-dialog-cont {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+
+.intro-text-modal2.open {
+  display: block;
+}
+
+.ship-gif-modal {
+  display: none;
+}
+
+.ship-gif-modal.open {
+  display: block;
+}
+
+.start-ship-modal {
+  display: none;
+}
+
+.start-ship-modal.open {
   display: block;
 }
 

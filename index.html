@@ -19,6 +19,7 @@
     <!-- make opening menu divs -->
     <section class="menus">
         <div id="init-menu" class="init-menu-modal">
+            <img src="https://salvage-op.s3.us-east-2.amazonaws.com/File_001.png" width="400" height="400" alt="" id="game-logo">
             <button class="init-button">Initialize</button>
         </div>
         <div id="game-menu" class="game-menu-modal">
@@ -28,6 +29,31 @@
                 <button class="credits-button">Credits</button>
             </div>
         </div>
+        <section id="intro" class="intro-modal">
+            <div class="into-screen">
+                <div class="ceres-modal">
+                    <img src="https://salvage-op.s3.us-east-2.amazonaws.com/sanford-kong-124-ext-ceres-ship-docks-7-01-final06.jpeg" width="650" height="400" alt="" id="ceres-station">
+                </div>
+                <div class="ship-gif-modal">
+                    <img src="https://salvage-op.s3.us-east-2.amazonaws.com/Belt_Transit_Ferry.gif" alt="" id="ship-gif">
+                </div>
+                <div class="start-ship-modal">
+                    <img src="https://salvage-op.s3.us-east-2.amazonaws.com/sanford-kong-xx-int-xinglong-7-01-28-oct-14.jpeg" width="650" height="400" alt="" id="start-ship">
+                </div>
+
+            </div>
+            <div class="intro-dialog">
+                <div class="intro-text-modal1">
+                    <p id="start-dialog">You've recent started working for BELTRANS AG, a passanger ad cargo transport company based out of the Belt. You've been on Ceres Station for about 2 month and you've spent basically all your Yen. The office comes through with a new
+                        mission! You grab your things and head to ship. The gas frieghter is leaving right away. You get settled onboard and disembark.</p>
+                </div>
+                <div class="intro-text-modal2">
+                    <p id="start-dialog-cont"> You’ve had plenty of time to get to know one another on this most recent transit through the system, with nothing but days of steady, routine acceleration and occasional course corrections. You skirt closer to the tumbling rocks of
+                        the Belt. Mid-way through your day-long shift, things are pretty routine when you notice something unusual on your long-range scans: A metallic body whose composition and shape isn’t an asteroid, but almost certainly a ship. It
+                        emits no transponder signal, however, and its power emissions are essentially nil at this distance. Its drive isn’t active, and it’s likely even its reactor is shut down. It’s adrift, a ghost ship floating in the Belt.</p>
+                </div>
+            </div>
+        </section>
     </section>
     <div id="drone-div" class="battle-modal1">
         <img src="" alt="" class="">
@@ -110,7 +136,7 @@
         </div>
     </section>
 
-    <video id="video-bg" poster="https://salvage-op.s3.us-east-2.amazonaws.com/Video_Poster.png" autoplay muted loop>
+    <video id="video-bg" class="videobg-modal" poster="https://salvage-op.s3.us-east-2.amazonaws.com/Video_Poster.png" autoplay muted loop>
         <source src="https://salvage-op.s3.us-east-2.amazonaws.com/The_Expanse_RPG_Background.m4v" type="video/mp4">
     </video>
     <script src="apps.js" async defer></script>
