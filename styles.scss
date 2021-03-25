@@ -1,482 +1,504 @@
- @import 'vars';
- * {
-     display: flex;
-     // size: 10px;
-     font-size: 10px;
- }
- 
- #video-bg {
-     position: fixed;
-     top: 50%;
-     left: 50%;
-     min-width: 100%;
-     min-height: 100%;
-     width: auto;
-     height: auto;
-     z-index: -100;
-     transform: translate(-50%, -50%);
- }
- 
- body {
-     background-image: url('https://salvage-op.s3.us-east-2.amazonaws.com/Starset.png');
-     button {
-         @extend %button-styles;
-     }
- }
- 
- // MODALS
- .init-menu-modal {
-     padding: 2rem;
-     height: 39.3rem;
-     width: 74.5rem;
-     text-align: center;
-     position: fixed;
-     top: 35%;
-     transform: translateX(-45%);
-     transform: translateY(-45%);
-     left: 0;
-     right: 0;
-     margin: 0 auto;
-     z-index: 9500;
-     display: block;
-     #game-logo {
-         display: flex;
-         justify-content: center;
-         width: 37.2rem;
-         padding: 5rem 0 0 0;
-         margin-left: 17.2rem;
-         z-index: 9000;
-     }
-     .init-button {
-         background-color: rgb(107, 3, 3);
-         padding: 2.5rem 3rem 2.5rem 3rem;
-         margin: 0 10rem 10rem 10rem;
-         margin-right: 45rem;
-         cursor: pointer;
-         font-size: 8rem;
-         text-shadow: -.1rem .1rem .4rem #000, .1rem .1rem .4rem #000, .1rem -.1rem .4rem #000, -.1rem -.1rem .4rem #000;
-         letter-spacing: .65rem;
-         color: rgb(228, 228, 228);
-         border: silver;
-         border-radius: 2rem;
-         border: .5rem solid rgb(125, 128, 131);
-     }
- }
- 
- .init-menu-modal.close {
-     display: none;
- }
- 
- .game-menu-modal {
-     // padding: 20px;
-     background-image: url(https://i.imgur.com/v89GyJ7.png);
-     background-position: center;
-     @extend %modal-styles;
-     z-index: 9000;
-     display: none;
-     .main-menu {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         align-content: space-around;
-         padding: 4rem;
-         z-index: 8500;
-         // transform: translateX(13%);
-     }
-     button {
-         @include buttonColors(#50a997);
-         margin: 3rem 2rem 3.5rem 2rem;
-         padding: 1rem 0.5rem 1rem 0.5rem;
-         cursor: pointer;
-         font-size: 2rem;
-         letter-spacing: .65rem;
-         color: rgb(228, 228, 228);
-     }
- }
- 
- .game-menu-modal.open {
-     display: block;
- }
- 
- .videobg-modal {
-     display: block;
- }
- 
- .videobg-modal.close {
-     display: none;
- }
- 
- .intro-modal {
-     @extend %modal-styles;
-     height: 50rem;
-     width: 70rem;
-     z-index: 8500;
-     display: none;
-     .intro-screen {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         // align-content: space-around;
-         padding: 4rem;
-     }
-     #cere-station {
-         display: flex;
-         justify-content: center;
-         padding: 5rem 0 0 3.46rem;
-         margin-left: 7.2rem;
-         transform: translateX(5%);
-         z-index: 8500;
-     }
-     #ship-gif {
-         display: flex;
-         justify-content: center;
-         padding: 5rem 0 0 15.46rem;
-         margin-right: 3.2rem;
-         transform: translateX(-15%);
-         z-index: 8500;
-     }
-     #start-ship {
-         display: flex;
-         justify-content: center;
-         padding: 0 0 10rem 1.46rem;
-         margin-left: 2rem;
-         z-index: 8500;
-     }
- }
- 
- .intro-modal.open {
-     display: block;
- }
- 
- .ceres-modal {
-     display: none;
- }
- 
- .ceres-modal.open {
-     display: block;
- }
- 
- .intro-text-modal1 {
-     @extend %modal-styles;
-     text-align: start;
-     height: 20rem;
-     width: 60rem;
-     transform: translateY(75%);
-     display: none;
-     #start-dialog {
-         color: whitesmoke;
-         font-size: 2rem;
-     }
- }
- 
- .intro-text-modal1.open {
-     display: block;
- }
- 
- .intro-text-modal2 {
-     @extend %modal-styles;
-     text-align: start;
-     height: 20rem;
-     width: 60rem;
-     transform: translateY(75%);
-     display: none;
-     #start-dialog-cont {
-         color: whitesmoke;
-         font-size: 2rem;
-     }
- }
- 
- .intro-text-modal2.open {
-     display: block;
- }
- 
- .ship-gif-modal {
-     display: none;
- }
- 
- .ship-gif-modal.open {
-     display: block;
- }
- 
- .start-ship-modal {
-     @extend %modal-styles;
-     display: none;
- }
- 
- .start-ship-modal.open {
-     display: block;
- }
- 
- .ship-scan-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .ship-scan-modal.open {
-     display: flex;
- }
- 
- .results-modal {
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     height: 15rem;
-     width: 60rem;
-     #scan-result1 {
-         color: whitesmoke;
-         font-size: 2rem;
-     }
-     #scan-result2 {
-         color: whitesmoke;
-         font-size: 2rem;
-     }
-     #scan-result3 {
-         color: whitesmoke;
-         font-size: 2rem;
-     }
-     #scan-result4 {
-         color: whitesmoke;
-         font-size: 2rem;
-     }
- }
- 
- .results-modal.open {
-     display: flex;
- }
- 
- .eva-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
-     #eva-description {
-         color: whitesmoke;
-         font-size: 2.5rem;
-     }
- }
- 
- .eva-modal.open {
-     display: flex;
- }
- 
- .airlocks-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .airlocks-modal.open {
-     display: flex;
- }
- 
- .cargo-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
-     //     #sixth-next {
-     //         display: flex;
-     //         position: fixed;
-     //         // transform: translateY(1100%);
-     //         z-index: 2500;
-     //     }
-     #cargo-message1 {
-         display: flex;
-         position: fixed;
-         transform: translateY(556%);
-         color: whitesmoke;
-         font-size: 2.5rem;
-     }
-     //     #pirate1 {
-     //         z-index: 2000;
-     //     }
-     //     #loot {
-     //         z-index: 2000;
-     //     }
- }
- 
- .cargo-modal.open {
-     display: flex;
- }
- 
- // #To-deck-3 {
- //     display: flex;
- //     position: fixed;
- //     transform: translateY(1100%);
- // }
- // #cargo-message2 {
- //     display: flex;
- //     position: fixed;
- //     transform: translateY(565%);
- //     #cargo-message2 {
- //         color: whitesmoke;
- //         font-size: 2.5rem;
- //     }
- // }
- //
- .engineering-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .engineering-modal.open {
-     display: flex;
- }
- 
- .battle-modal1 {
-     background-image: url(https://salvage-op.s3.us-east-2.amazonaws.com/panel-1.png);
-     background-position: center;
-     @extend %modal-styles;
-     height: 35.5rem;
-     width: 54.5rem;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
-     z-index: 2500;
- }
- 
- .battle-modal1.open {
-     display: flex;
- }
- 
- .cargo-modal2 {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .cargo-modal2.open {
-     display: flex;
- }
- 
- .crew3-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .crew3-modal.open {
-     display: flex;
- }
- 
- .crew2-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .crew2-modal.open {
-     display: flex;
- }
- 
- .crew1-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .crew1-modal.open {
-     display: flex;
- }
- 
- .galley-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .galley-modal.open {
-     display: flex;
- }
- 
- .command-modal {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .command-modal.open {
-     display: flex;
- }
- 
- .prize-button-modal {
-     display: none;
- }
- 
- .prize-button-modal.open {
-     display: flex;
- }
- 
- .cargo-modal3 {
-     @extend %modal-styles;
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     transform: translateX(-30);
-     padding: 4rem;
- }
- 
- .cargo-modal3.open {
-     display: flex;
- }
- 
- // 
- //SCREEN SIZE CONTINUITY
- @media (min-aspect-ratio: 16/9) {
-     #video-bg {
-         width: 100%;
-         height: auto;
-     }
- }
- 
- @media (max-aspect-ratio: 16/9) {
-     #video-bg {
-         width: auto;
-         height: 100%;
-     }
- }
- 
- @media (max-width: 767px) {
-     #videoBG {
-         display: none;
-     }
-     body {
-         background: url('https://salvage-op.s3.us-east-2.amazonaws.com/The_Expanse_RPG_Background.m4v');
-         background-size: cover;
-     }
- }
+@import 'vars';
+* {
+    display: flex;
+    // size: 10px;
+    font-size: 10px;
+}
+
+#video-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+}
+
+body {
+    background-image: url('https://salvage-op.s3.us-east-2.amazonaws.com/Starset.png');
+    button {
+        @extend %button-styles;
+    }
+}
+
+// MODALS
+.init-menu-modal {
+    padding: 2rem;
+    height: 39.3rem;
+    width: 74.5rem;
+    text-align: center;
+    position: fixed;
+    top: 35%;
+    transform: translateX(-45%);
+    transform: translateY(-45%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9500;
+    display: none;
+    flex-direction: column;
+    #game-logo {
+        display: flex;
+        justify-content: center;
+        width: 45rem;
+        padding: 5rem 0 0 0;
+        margin-left: 17.2rem;
+        z-index: 9000;
+    }
+    .init-button {
+        background-color: rgb(107, 3, 3);
+        padding: 2.5rem 3rem 2.5rem 3rem;
+        margin: 0 10rem 10rem 10rem;
+        // margin-right: 45rem;
+        transform: translateX(6%);
+        cursor: pointer;
+        font-size: 8rem;
+        text-shadow: -.1rem .1rem .4rem #000, .1rem .1rem .4rem #000, .1rem -.1rem .4rem #000, -.1rem -.1rem .4rem #000;
+        letter-spacing: .65rem;
+        color: rgb(228, 228, 228);
+        border: silver;
+        border-radius: 2rem;
+        border: .5rem solid rgb(125, 128, 131);
+    }
+}
+
+.init-menu-modal.close {
+    display: none;
+}
+
+.game-menu-modal {
+    // padding: 20px;
+    background-image: url(https://i.imgur.com/v89GyJ7.png);
+    background-position: center;
+    @extend %modal-styles;
+    display: none;
+    z-index: 9000;
+    transform: translateX(10%);
+    transform: translateY(-50%);
+    .main-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: space-around;
+        transform: translateX(4%);
+        padding: 4rem;
+        z-index: 8500;
+        // transform: translateX(13%);
+    }
+    button {
+        @include buttonColors(#50a997);
+        margin: 2.5rem 2rem .5rem 4rem;
+        padding: 1rem 0.5rem 1rem 0.5rem;
+        cursor: pointer;
+        font-size: 2rem;
+        letter-spacing: .65rem;
+        color: rgb(228, 228, 228);
+    }
+    #linear-logo {
+        margin-top: 2rem;
+    }
+}
+
+.game-menu-modal.open {
+    display: flex;
+}
+
+.videobg-modal {
+    display: block;
+}
+
+.videobg-modal.close {
+    display: none;
+}
+
+.intro-modal {
+    @extend %modal-styles;
+    height: 50rem;
+    width: 70rem;
+    z-index: 8500;
+    display: none;
+    .intro-screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // align-content: space-around;
+        padding: 4rem;
+    }
+    #cere-station {
+        display: flex;
+        justify-content: center;
+        padding: 5rem 0 0 3.46rem;
+        margin-left: 7.2rem;
+        transform: translateX(5%);
+        z-index: 8500;
+    }
+    #ship-gif {
+        display: flex;
+        justify-content: center;
+        padding: 5rem 0 0 15.46rem;
+        margin-right: 3.2rem;
+        transform: translateX(-15%);
+        z-index: 8500;
+    }
+    #start-ship {
+        display: flex;
+        justify-content: center;
+        padding: 0 0 10rem 1.46rem;
+        margin-left: 2rem;
+        z-index: 8500;
+    }
+}
+
+.intro-modal.open {
+    display: block;
+}
+
+.ceres-modal {
+    display: none;
+}
+
+.ceres-modal.open {
+    display: block;
+}
+
+.intro-text-modal1 {
+    @extend %modal-styles;
+    text-align: start;
+    height: 20rem;
+    width: 60rem;
+    transform: translateY(75%);
+    display: none;
+    #start-dialog {
+        color: whitesmoke;
+        font-size: 2rem;
+    }
+}
+
+.intro-text-modal1.open {
+    display: block;
+}
+
+.intro-text-modal2 {
+    @extend %modal-styles;
+    text-align: start;
+    height: 20rem;
+    width: 60rem;
+    transform: translateY(75%);
+    display: none;
+    #start-dialog-cont {
+        color: whitesmoke;
+        font-size: 2rem;
+    }
+}
+
+.intro-text-modal2.open {
+    display: block;
+}
+
+.ship-gif-modal {
+    display: none;
+}
+
+.ship-gif-modal.open {
+    display: block;
+}
+
+.start-ship-modal {
+    @extend %modal-styles;
+    display: none;
+}
+
+.start-ship-modal.open {
+    display: block;
+}
+
+.ship-scan-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.ship-scan-modal.open {
+    display: flex;
+}
+
+.results-modal {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    height: 15rem;
+    width: 60rem;
+    #scan-result1 {
+        color: whitesmoke;
+        font-size: 2rem;
+    }
+    #scan-result2 {
+        color: whitesmoke;
+        font-size: 2rem;
+    }
+    #scan-result3 {
+        color: whitesmoke;
+        font-size: 2rem;
+    }
+    #scan-result4 {
+        color: whitesmoke;
+        font-size: 2rem;
+    }
+}
+
+.results-modal.open {
+    display: flex;
+}
+
+.eva-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+    #eva-description {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
+}
+
+.eva-modal.open {
+    display: flex;
+}
+
+.airlocks-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.airlocks-modal.open {
+    display: flex;
+}
+
+.cargo-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+    //     #sixth-next {
+    //         display: flex;
+    //         position: fixed;
+    //         // transform: translateY(1100%);
+    //         z-index: 2500;
+    //     }
+    #cargo-message1 {
+        display: flex;
+        position: fixed;
+        transform: translateY(556%);
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
+    //     #pirate1 {
+    //         z-index: 2000;
+    //     }
+    //     #loot {
+    //         z-index: 2000;
+    //     }
+}
+
+.cargo-modal.open {
+    display: flex;
+}
+
+.reactor-startup-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.reactor-startup-modal.open {
+    display: flex;
+}
+
+.engineering-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.engineering-modal.open {
+    display: flex;
+}
+
+.battle-modal1 {
+    background-image: url(https://salvage-op.s3.us-east-2.amazonaws.com/panel-1.png);
+    background-position: center;
+    @extend %modal-styles;
+    height: 35.5rem;
+    width: 54.5rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+    z-index: 2500;
+    #attack-drone {
+        cursor: crosshair;
+    }
+}
+
+.battle-modal1.open {
+    display: flex;
+}
+
+.cargo-modal2 {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.cargo-modal2.open {
+    display: flex;
+}
+
+.crew3-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.crew3-modal.open {
+    display: flex;
+}
+
+.crew2-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.crew2-modal.open {
+    display: flex;
+}
+
+.crew1-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.crew1-modal.open {
+    display: flex;
+}
+
+.galley-modal {
+    @extend %modal-styles;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.galley-modal.open {
+    display: flex;
+}
+
+.command-password-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.command-password-modal.open {
+    display: flex;
+}
+
+.command-modal {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.command-modal.open {
+    display: flex;
+}
+
+.prize-button-modal {
+    display: none;
+}
+
+.prize-button-modal.open {
+    display: flex;
+}
+
+.cargo-modal3 {
+    @extend %modal-styles;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-30);
+    padding: 4rem;
+}
+
+.cargo-modal3.open {
+    display: flex;
+}
+
+// 
+//SCREEN SIZE CONTINUITY
+@media (min-aspect-ratio: 16/9) {
+    #video-bg {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #video-bg {
+        width: auto;
+        height: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    #videoBG {
+        display: none;
+    }
+    body {
+        background: url('https://salvage-op.s3.us-east-2.amazonaws.com/The_Expanse_RPG_Background.m4v');
+        background-size: cover;
+    }
+}

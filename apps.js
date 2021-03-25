@@ -29,10 +29,10 @@ const fifthNextButton = document.querySelector('#fifth-next');
 //cargo level 1
 const cargoModal = document.querySelector('.cargo-modal');
 const sixthNextButton = document.querySelector('#sixth-next');
+const reactorNoteModal = document.querySelector('.reactor-startup-modal');
+const addReactorNote = document.querySelector('#reactor-note-add');
 //engineering level
 const engineeringModal = document.querySelector('.engineering-modal');
-const reactorStartModal = document.querySelector('.reactor-startup-modal');
-const commandPwModal = document.querySelector('.command-password-modal');
 const seventhNextButton = document.querySelector('#seventh-next');
 //cargo level 2
 const cargoModal2 = document.querySelector('.cargo-modal2');
@@ -49,6 +49,8 @@ const eleventhNextButton = document.querySelector('#eleventh-next');
 //galley level
 const galleyModal = document.querySelector('.galley-modal');
 const twelfthNextButton = document.querySelector('#twelfth-next');
+const commandPwModal = document.querySelector('.command-password-modal');
+const addPasswordNote = document.querySelector('#password-note-add');
 //command Deck level
 const commandModal = document.querySelector('.command-modal');
 const powerButton = document.querySelector('#power-button');
@@ -138,7 +140,7 @@ const drone1 = new Drone('drone1');
 const drone2 = new Drone('drone2');
 const drone3 = new Drone('drone3');
 
-const droneArray = [drone1, drone2, drone3];
+let droneArray = [drone1, drone2, drone3];
 
 //create bonus enemy
 // const pirateShip = {
@@ -179,17 +181,21 @@ const playerBattleCore = () => {
         diceRoll();
         if (diceRoll() >= 4) {
             droneArray[0].health -= player.weapons[0].hitpoints;
-            battleDialog1.innerHTML = (`It's a Hit! Drone is at ${droneArray[0].health} HP`);
+            //check health
+            if ((player.health > droneArray[0].health) && (droneArray[0].health <= 0)) {
+                battleDialog1.innerHTML = (`You've survived`)
+                droneArray.shift();
+                setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
+            } else {
+                battleDialog1.innerHTML = (`It's a Hit! Drone is at ${droneArray[0].health} HP`);
+            }
         } else {
             battleDialog1.innerHTML = (`You missed! Fuck!`)
         }
-    } else if ((player.health > droneArray[0].health) && (droneArray[0].health <= 0)) {
-        battleDialog1.innerHTML = (`You've survived`)
-        droneArray.shift();
-        setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
-
-    }
+    } 
 }
+
+
 
 
 const aiBattleCore = () => {
@@ -197,18 +203,28 @@ const aiBattleCore = () => {
         diceRoll();
         if (diceRoll() >= 6) {
             player.health = (player.health - droneArray[0].hitpoints);
-            battleDialog2.innerHTML = (`Ouch! You're hit! Your health is at ${player.health} HP`);
+            //check health
+            if ((player.health < droneArray[0].health) && (player.health >= 0)) {
+                battleDialog2.innerHTML = (`You Are Dead. Game Over!`)
+                setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
+                setTimeout(() => { resetGame(); }, 1000);
+            } else {
+                battleDialog2.innerHTML = (`Ouch! You're hit! Your health is at ${player.health} HP`);
+            }
         } else {
             battleDialog2.innerHTML = (`It's a miss! That was too close for comfort...`)
         }
-    } else if ((player.health < droneArray[0].health) && (player.health <= 0)) {
-        battleDialog2.innerHTML = (`You Are Dead. Game Over!`)
     }
 }
+
 
 const battleCore = () => {
     playerBattleCore();
     aiBattleCore();
+    setTimeout(() => { battleDialog1.innerHTML = (` `); }, 2275);
+    setTimeout(() => { battleDialog2.innerHTML = (` `); }, 2275);
+
+
 }
 
 // battleCore();
@@ -451,4 +467,51 @@ powerButton.addEventListener('click', () => {
     prizeModal.classList.add('open');
 })
 
+addReactorNote.addEventListener('click', () => {
+    reactorNoteModal.classList.remove('open');
+    reactorNote();
+    console.log(`Here are your notes: ${player.supplies}`);
+})
+
+addPasswordNote.addEventListener('click', () => {
+    commandPwModal.classList.remove('open');
+    piscusPassword();
+    console.log(`Here are your notes: ${player.supplies}`)
+})
+
+
 attackDrone.addEventListener('click', battleCore);
+
+//reset game function
+const droneArrayIndex = [drone1, drone2, drone3];
+const resetGame = () => {
+    commandModal.classList.remove('open');
+    galleyModal.classList.remove('open');
+    crew1Modal.classList.remove('open');
+    crew2Modal.classList.remove('open');
+    crew3Modal.classList.remove('open');
+    cargoModal2.classList.remove('open');
+    commandPwModal.classList.remove('open');
+    reactorNoteModal.classList.remove('open');
+    engineeringModal.classList.remove('open');
+    cargoModal.classList.remove('open');
+    airlocksModal.classList.remove('open');
+    evaModal.classList.remove('open');
+    resultsModal.classList.remove('open');
+    shipScanModal.classList.remove('open');
+    introTextModal2.classList.remove('open');
+    introTextModal1.classList.remove('open');
+    startShipModal.classList.remove('open');
+    shipGifModal.classList.remove('open');
+    ceresModal.classList.remove('open');
+    introModal.classList.remove('open');
+    videobgModal.classList.remove('close');
+    gameMenuModal.classList.add('open');
+    //play menu music
+    player.health = 100;
+    player.supplies = [];
+    player.weapons = [];
+    droneArray = droneArrayIndex;
+    //set the start time of every audio track used to 0:00:00
+
+}

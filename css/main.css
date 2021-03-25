@@ -6,7 +6,7 @@ body button {
   font-weight: bolder;
 }
 
-.cargo-modal3, .command-modal, .galley-modal, .crew1-modal, .crew2-modal, .crew3-modal, .cargo-modal2, .battle-modal1, .engineering-modal, .cargo-modal, .airlocks-modal, .eva-modal, .ship-scan-modal, .start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
+.cargo-modal3, .command-modal, .command-password-modal, .galley-modal, .crew1-modal, .crew2-modal, .crew3-modal, .cargo-modal2, .battle-modal1, .engineering-modal, .reactor-startup-modal, .cargo-modal, .airlocks-modal, .eva-modal, .ship-scan-modal, .start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
   height: 43.5rem;
   width: 62.5rem;
   text-align: center;
@@ -51,12 +51,13 @@ body {
   right: 0;
   margin: 0 auto;
   z-index: 9500;
-  display: block;
+  display: none;
+  flex-direction: column;
 }
 .init-menu-modal #game-logo {
   display: flex;
   justify-content: center;
-  width: 37.2rem;
+  width: 45rem;
   padding: 5rem 0 0 0;
   margin-left: 17.2rem;
   z-index: 9000;
@@ -65,7 +66,7 @@ body {
   background-color: #6b0303;
   padding: 2.5rem 3rem 2.5rem 3rem;
   margin: 0 10rem 10rem 10rem;
-  margin-right: 45rem;
+  transform: translateX(6%);
   cursor: pointer;
   font-size: 8rem;
   text-shadow: -0.1rem 0.1rem 0.4rem #000, 0.1rem 0.1rem 0.4rem #000, 0.1rem -0.1rem 0.4rem #000, -0.1rem -0.1rem 0.4rem #000;
@@ -83,30 +84,36 @@ body {
 .game-menu-modal {
   background-image: url(https://i.imgur.com/v89GyJ7.png);
   background-position: center;
-  z-index: 9000;
   display: none;
+  z-index: 9000;
+  transform: translateX(10%);
+  transform: translateY(-50%);
 }
 .game-menu-modal .main-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: space-around;
+  transform: translateX(4%);
   padding: 4rem;
   z-index: 8500;
 }
 .game-menu-modal button {
   background-color: #50a997;
   border: 0.4rem solid black;
-  margin: 3rem 2rem 3.5rem 2rem;
+  margin: 2.5rem 2rem 0.5rem 4rem;
   padding: 1rem 0.5rem 1rem 0.5rem;
   cursor: pointer;
   font-size: 2rem;
   letter-spacing: 0.65rem;
   color: #e4e4e4;
 }
+.game-menu-modal #linear-logo {
+  margin-top: 2rem;
+}
 
 .game-menu-modal.open {
-  display: block;
+  display: flex;
 }
 
 .videobg-modal {
@@ -300,6 +307,18 @@ body {
   display: flex;
 }
 
+.reactor-startup-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.reactor-startup-modal.open {
+  display: flex;
+}
+
 .engineering-modal {
   display: none;
   flex-direction: column;
@@ -323,6 +342,9 @@ body {
   transform: translateX(-30);
   padding: 4rem;
   z-index: 2500;
+}
+.battle-modal1 #attack-drone {
+  cursor: crosshair;
 }
 
 .battle-modal1.open {
@@ -378,7 +400,7 @@ body {
 }
 
 .galley-modal {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   transform: translateX(-30);
@@ -386,6 +408,18 @@ body {
 }
 
 .galley-modal.open {
+  display: flex;
+}
+
+.command-password-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.command-password-modal.open {
   display: flex;
 }
 
