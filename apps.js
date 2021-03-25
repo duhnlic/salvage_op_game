@@ -1,16 +1,10 @@
 //CACHED HTML ELEMENTS
 const battleModal1 = document.querySelector('.battle-modal1');
 const battleModal2 = document.querySelector('.battle-modal2');
-const commandModal = document.querySelector('#command-modal');
-const galleyModal = document.querySelector('#galley-modal');
-const crew1Modal = document.querySelector('#crew1-modal');
-const crew2Modal = document.querySelector('#crew2-modal');
-const crew3Modal = document.querySelector('#crew3-modal');
-const airlockModal = document.querySelector('#airlock-modal');
-const cargoModal = document.querySelector('#cargo-modal');
-const engineeringModal = document.querySelector('#engineering-modal');
-const reactorStartModal = document.querySelector('#reactor-startup-modal');
-const commandPwModal = document.querySelector('#command-password-modal');
+const battleDialog1 = document.querySelector('#battle-dialog1');
+const battleDialog2 = document.querySelector('#battle-dialog2');
+//attack button
+const attackDrone = document.querySelector('#attack-drone');
 // const testButton = document.querySelector('.test-button');
 const initMenu = document.querySelector('#init-menu')
 const initButton = document.querySelector('.init-button')
@@ -19,10 +13,33 @@ const videobgModal = document.querySelector('.videobg-modal');
 const startButton = document.querySelector('.start-button');
 const introModal = document.querySelector('.intro-modal');
 const ceresModal = document.querySelector('.ceres-modal');
-const shipGifModal = document.querySelector('.sip-gif-modal');
+const shipGifModal = document.querySelector('.ship-gif-modal');
 const startShipModal = document.querySelector('.start-ship-modal')
 const introTextModal1 = document.querySelector('.intro-text-modal1');
+const firstNextButton = document.querySelector('#first-next');
 const introTextModal2 = document.querySelector('.intro-text-modal2');
+const secondNextButton = document.querySelector('#second-next');
+const shipScanModal = document.querySelector('.ship-scan-modal');
+const resultsModal = document.querySelector('.results-modal');
+const thirdNextButton = document.querySelector('#third-next');
+const evaModal = document.querySelector('.eva-modal');
+const fourthNextButton = document.querySelector('#fourth-next');
+const airlocksModal = document.querySelector('.airlocks-modal');
+const fifthNextButton = document.querySelector('#fifth-next');
+//cargo level 1
+const cargoModal = document.querySelector('.cargo-modal');
+const sixthNextButton = document.querySelector('#sixth-next');
+//engineering level
+const engineeringModal = document.querySelector('.engineering-modal');
+const reactorStartModal = document.querySelector('.reactor-startup-modal');
+const commandPwModal = document.querySelector('.command-password-modal');
+
+
+const commandModal = document.querySelector('.command-modal');
+const galleyModal = document.querySelector('.galley-modal');
+const crew1Modal = document.querySelector('.crew1-modal');
+const crew2Modal = document.querySelector('.crew2-modal');
+const crew3Modal = document.querySelector('.crew3-modal');
 
 
 
@@ -143,13 +160,14 @@ const playerBattleCore = () => {
         diceRoll();
         if (diceRoll() >= 4) {
             droneArray[0].health -= player.weapons[0].hitpoints;
-            console.log(`It's a Hit! Drone is at ${droneArray[0].health} HP`);
+            battleDialog1.innerHTML = (`It's a Hit! Drone is at ${droneArray[0].health} HP`);
         } else {
-            console.log(`You missed! Fuck!`)
+            battleDialog1.innerHTML = (`You missed! Fuck!`)
         }
     } else if ((player.health > droneArray[0].health) && (droneArray[0].health <= 0)) {
-        console.log(`You've survived`)
+        battleDialog1.innerHTML = (`You've survived`)
         droneArray.pop();
+        setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
 
     }
 }
@@ -160,12 +178,12 @@ const aiBattleCore = () => {
         diceRoll();
         if (diceRoll() >= 6) {
             player.health = (player.health - droneArray[0].hitpoints);
-            console.log(`Ouch! You're hit! Your health is at ${player.health} HP`);
+            battleDialog2.innerHTML = (`Ouch! You're hit! Your health is at ${player.health} HP`);
         } else {
-            console.log(`It's a miss! That was too close for comfort...`)
+            battleDialog2.innerHTML = (`It's a miss! That was too close for comfort...`)
         }
     } else if ((player.health < droneArray[0].health) && (player.health <= 0)) {
-        console.log(`You Are Dead. Game Over!`)
+        battleDialog2.innerHTML = (`You Are Dead. Game Over!`)
     }
 }
 
@@ -330,10 +348,47 @@ startButton.addEventListener('click', () => {
     setTimeout(() => { introModal.classList.add('open'); }, 500);
     ceresModal.classList.add('open');
     introTextModal1.classList.add('open');
-    setTimeout(() => { introTextModal2.classList.add('open'); }, 5000);
-    setTimeout(() => { introTextModal1.classList.remove('open'); }, 5000);
-
-
-
 
 })
+
+firstNextButton.addEventListener('click', () => {
+    ceresModal.classList.remove('open');
+    shipGifModal.classList.add('open');
+    introTextModal1.classList.remove('open');
+    setTimeout(() => { introTextModal2.classList.add('open'); }, 13600);
+    setTimeout(() => { shipGifModal.classList.remove('open'); }, 13600);
+    setTimeout(() => { startShipModal.classList.add('open'); }, 13600);
+})
+
+secondNextButton.addEventListener('click', () => {
+    introTextModal2.classList.remove('open');
+    introModal.classList.remove('open');
+    startShipModal.classList.remove('open');
+    shipScanModal.classList.add('open');
+    setTimeout(() => { resultsModal.classList.add('open'); }, 4500);
+
+})
+
+thirdNextButton.addEventListener('click', () => {
+    shipScanModal.classList.remove('open');
+    evaModal.classList.add('open');
+
+})
+
+fourthNextButton.addEventListener('click', () => {
+    evaModal.classList.remove('open');
+    airlocksModal.classList.add('open');
+})
+
+fifthNextButton.addEventListener('click', () => {
+    airlocksModal.classList.remove('open');
+    cargoModal.classList.add('open');
+})
+
+sixthNextButton.addEventListener('click', () => {
+    battleModal1.classList.add('open');
+    cargoModal.classList.remove('open');
+    engineeringModal.classList.add('open');
+})
+
+attackDrone.addEventListener('click', battleCore);

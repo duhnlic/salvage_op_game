@@ -6,7 +6,7 @@ body button {
   font-weight: bolder;
 }
 
-.start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
+.battle-modal1, .engineering-modal, .cargo-modal, .airlocks-modal, .eva-modal, .ship-scan-modal, .start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
   height: 43.5rem;
   width: 62.5rem;
   text-align: center;
@@ -140,9 +140,9 @@ body {
 .intro-modal #ship-gif {
   display: flex;
   justify-content: center;
-  padding: 5rem 0 0 3.46rem;
-  margin-right: 7.2rem;
-  transform: translateX(-100%);
+  padding: 5rem 0 0 15.46rem;
+  margin-right: 3.2rem;
+  transform: translateX(-15%);
   z-index: 8500;
 }
 .intro-modal #start-ship {
@@ -211,6 +211,122 @@ body {
 
 .start-ship-modal.open {
   display: block;
+}
+
+.ship-scan-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.ship-scan-modal.open {
+  display: flex;
+}
+
+.results-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: 15rem;
+  width: 60rem;
+}
+.results-modal #scan-result1 {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+.results-modal #scan-result2 {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+.results-modal #scan-result3 {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+.results-modal #scan-result4 {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+
+.results-modal.open {
+  display: flex;
+}
+
+.eva-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+.eva-modal #eva-description {
+  color: whitesmoke;
+  font-size: 2.5rem;
+}
+
+.eva-modal.open {
+  display: flex;
+}
+
+.airlocks-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.airlocks-modal.open {
+  display: flex;
+}
+
+.cargo-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+.cargo-modal #cargo-message1 {
+  display: flex;
+  position: fixed;
+  transform: translateY(556%);
+  color: whitesmoke;
+  font-size: 2.5rem;
+}
+
+.cargo-modal.open {
+  display: flex;
+}
+
+.engineering-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.engineering-modal.open {
+  display: flex;
+}
+
+.battle-modal1 {
+  background-image: url(https://salvage-op.s3.us-east-2.amazonaws.com/panel-1.png);
+  background-position: center;
+  height: 35.5rem;
+  width: 54.5rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+  z-index: 2500;
+}
+
+.battle-modal1.open {
+  display: flex;
 }
 
 @media (min-aspect-ratio: 16/9) {
