@@ -33,13 +33,32 @@ const sixthNextButton = document.querySelector('#sixth-next');
 const engineeringModal = document.querySelector('.engineering-modal');
 const reactorStartModal = document.querySelector('.reactor-startup-modal');
 const commandPwModal = document.querySelector('.command-password-modal');
-
-
-const commandModal = document.querySelector('.command-modal');
-const galleyModal = document.querySelector('.galley-modal');
-const crew1Modal = document.querySelector('.crew1-modal');
-const crew2Modal = document.querySelector('.crew2-modal');
+const seventhNextButton = document.querySelector('#seventh-next');
+//cargo level 2
+const cargoModal2 = document.querySelector('.cargo-modal2');
+const eigthNextButton = document.querySelector('#eigth-next');
+//crew deck 3 level
 const crew3Modal = document.querySelector('.crew3-modal');
+const ninthNextButton = document.querySelector('#ninth-next');
+//crew deck 2 level
+const crew2Modal = document.querySelector('.crew2-modal');
+const tenthNextButton = document.querySelector('#tenth-next');
+//crew deck 1 level
+const crew1Modal = document.querySelector('.crew1-modal');
+const eleventhNextButton = document.querySelector('#eleventh-next');
+//galley level
+const galleyModal = document.querySelector('.galley-modal');
+const twelfthNextButton = document.querySelector('#twelfth-next');
+//command Deck level
+const commandModal = document.querySelector('.command-modal');
+const powerButton = document.querySelector('#power-button');
+const prizeModal = document.querySelector('.prize-button-modal');
+const thirteenthNextButton = document.querySelector('#thirteenth-next');
+//cargo hold PRIZE level
+const cargoModal3 = document.querySelector('.cargo-modal3');
+
+
+
 
 
 
@@ -166,7 +185,7 @@ const playerBattleCore = () => {
         }
     } else if ((player.health > droneArray[0].health) && (droneArray[0].health <= 0)) {
         battleDialog1.innerHTML = (`You've survived`)
-        droneArray.pop();
+        droneArray.shift();
         setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
 
     }
@@ -389,6 +408,47 @@ sixthNextButton.addEventListener('click', () => {
     battleModal1.classList.add('open');
     cargoModal.classList.remove('open');
     engineeringModal.classList.add('open');
+})
+
+seventhNextButton.addEventListener('click', () => {
+    engineeringModal.classList.remove('open');
+    cargoModal2.classList.add('open');
+})
+
+eigthNextButton.addEventListener('click', () => {
+    cargoModal2.classList.remove('open');
+    crew3Modal.classList.add('open');
+
+})
+
+ninthNextButton.addEventListener('click', () => {
+    crew3Modal.classList.remove('open');
+    crew2Modal.classList.add('open');
+})
+
+tenthNextButton.addEventListener('click', () => {
+    crew2Modal.classList.remove('open');
+    crew1Modal.classList.add('open');
+})
+
+eleventhNextButton.addEventListener('click', () => {
+    crew1Modal.classList.remove('open');
+    galleyModal.classList.add('open');
+})
+
+twelfthNextButton.addEventListener('click', () => {
+    galleyModal.classList.remove('open');
+    commandModal.classList.add('open');
+    battleModal1.classList.add('open');
+})
+
+thirteenthNextButton.addEventListener('click', () => {
+    commandModal.classList.remove('open');
+    cargoModal3.classList.add('open');
+})
+
+powerButton.addEventListener('click', () => {
+    prizeModal.classList.add('open');
 })
 
 attackDrone.addEventListener('click', battleCore);

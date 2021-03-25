@@ -6,7 +6,7 @@ body button {
   font-weight: bolder;
 }
 
-.battle-modal1, .engineering-modal, .cargo-modal, .airlocks-modal, .eva-modal, .ship-scan-modal, .start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
+.cargo-modal3, .command-modal, .galley-modal, .crew1-modal, .crew2-modal, .crew3-modal, .cargo-modal2, .battle-modal1, .engineering-modal, .cargo-modal, .airlocks-modal, .eva-modal, .ship-scan-modal, .start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
   height: 43.5rem;
   width: 62.5rem;
   text-align: center;
@@ -326,6 +326,98 @@ body {
 }
 
 .battle-modal1.open {
+  display: flex;
+}
+
+.cargo-modal2 {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.cargo-modal2.open {
+  display: flex;
+}
+
+.crew3-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.crew3-modal.open {
+  display: flex;
+}
+
+.crew2-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.crew2-modal.open {
+  display: flex;
+}
+
+.crew1-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.crew1-modal.open {
+  display: flex;
+}
+
+.galley-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.galley-modal.open {
+  display: flex;
+}
+
+.command-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.command-modal.open {
+  display: flex;
+}
+
+.prize-button-modal {
+  display: none;
+}
+
+.prize-button-modal.open {
+  display: flex;
+}
+
+.cargo-modal3 {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-30);
+  padding: 4rem;
+}
+
+.cargo-modal3.open {
   display: flex;
 }
 

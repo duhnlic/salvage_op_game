@@ -356,6 +356,105 @@
      display: flex;
  }
  
+ .cargo-modal2 {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .cargo-modal2.open {
+     display: flex;
+ }
+ 
+ .crew3-modal {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .crew3-modal.open {
+     display: flex;
+ }
+ 
+ .crew2-modal {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .crew2-modal.open {
+     display: flex;
+ }
+ 
+ .crew1-modal {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .crew1-modal.open {
+     display: flex;
+ }
+ 
+ .galley-modal {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .galley-modal.open {
+     display: flex;
+ }
+ 
+ .command-modal {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .command-modal.open {
+     display: flex;
+ }
+ 
+ .prize-button-modal {
+     display: none;
+ }
+ 
+ .prize-button-modal.open {
+     display: flex;
+ }
+ 
+ .cargo-modal3 {
+     @extend %modal-styles;
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     transform: translateX(-30);
+     padding: 4rem;
+ }
+ 
+ .cargo-modal3.open {
+     display: flex;
+ }
+ 
  // 
  //SCREEN SIZE CONTINUITY
  @media (min-aspect-ratio: 16/9) {
