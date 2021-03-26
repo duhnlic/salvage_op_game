@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="eva-modal">
-        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/ship_diagramm.png" height="600" width="250" alt="">
+        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/Ship_diagramm.png" height="400" width="150" alt="">
         <p id="eva-description">You suit up, grab your company issue Shock Baton and E.V.A. to the ghost ship. You have open the door manually open the external and internal airlock doors.</p>
         <button id='fourth-next'>Board Unknown Craft</button>
     </div>
@@ -135,23 +135,31 @@
         <p>The Reactor is off, so there is no Life Support. You have to keep your EVA suit on. This room is Empty </p>
 
     </div>
+    <div id="loot-message1" class="loot1">
+        <p id="loot-message">The loot appears to be locked to the floor with magnets. You'll have to turn on the power before you can access this.</p>
+    </div>
+    <div id="loot-message2" class="loot2">
+        <p id="loot-message-win">The Loot is yours! You can take it back to the your ship and have a huge payday! You win!</p>
+    </div>
     <div class="cargo-modal">
-        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="420" width="570" alt="" class="">
-        <!-- <div id="pirate1">
+        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="520" width="660" alt="" class="">
+        <div id="secret-note" role="button" aria-pressed="true" tabindex="0">
+            <img src="https://salvage-op.s3.us-east-2.amazonaws.com/empty.png" height="50" width="50" alt="">
+        </div>
+        <div id="loot-locked1" class="loot-locked" role="button" aria-pressed="true" tabindex="0">
+            <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold_loot.png" height="70" width="90" alt="">
 
         </div>
-        <div id="loot">
-
-        </div> -->
         <button id="sixth-next">To Engineering</button>
         <p id="cargo-message1">This is where the loot is. Check that dead pirate.</p>
     </div>
     <div class="cargo-modal2">
-        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="420" width="570" alt="" class="">
+        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="520" width="6600" alt="" class="">
         <div id="pirate-1">
 
         </div>
-        <div id="loot-1">
+        <div id="loot-locked2" class="loot-locked" role="button" aria-pressed="true" tabindex="0">
+            <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold_loot.png" height="70" width="90" alt="">
 
         </div>
         <button id="eigth-next">To Crew Deck 3</button>
@@ -161,7 +169,8 @@
         <div id="pirate-2">
 
         </div>
-        <div id="loot-2">
+        <div id="loot-prize" class="loot-win" role="button" aria-pressed="true" tabindex="0">
+            <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold_loot.png" height="70" width="90" alt="">
 
         </div>
         <button id="Take-loot">Take loot</button>
@@ -188,7 +197,7 @@
     </div>
 
 
-    <video id="video-bg" class="videobg-modal" poster="https://salvage-op.s3.us-east-2.amazonaws.com/Video_Poster.png" autoplay muted loop>
+    <video id="video-bg" class="videobg-modal" poster="" autoplay muted loop>
         <source src="https://salvage-op.s3.us-east-2.amazonaws.com/The_Expanse_RPG_Background.m4v" type="video/mp4">
     </video>
     <script src="apps.js" async defer></script>

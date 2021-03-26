@@ -30,13 +30,18 @@ const fifthNextButton = document.querySelector('#fifth-next');
 const cargoModal = document.querySelector('.cargo-modal');
 const sixthNextButton = document.querySelector('#sixth-next');
 const reactorNoteModal = document.querySelector('.reactor-startup-modal');
+const secretNote = document.querySelector('#secret-note');
 const addReactorNote = document.querySelector('#reactor-note-add');
-//engineering level
+const lootCrateButton1 = document.querySelector('#loot-locked1');
+const lootNoNoModal = document.querySelector('.loot1')
+    //engineering level
 const engineeringModal = document.querySelector('.engineering-modal');
 const seventhNextButton = document.querySelector('#seventh-next');
 //cargo level 2
 const cargoModal2 = document.querySelector('.cargo-modal2');
 const eigthNextButton = document.querySelector('#eigth-next');
+const lootCrateButton2 = document.querySelector('#loot-locked2');
+
 //crew deck 3 level
 const crew3Modal = document.querySelector('.crew3-modal');
 const ninthNextButton = document.querySelector('#ninth-next');
@@ -58,6 +63,10 @@ const prizeModal = document.querySelector('.prize-button-modal');
 const thirteenthNextButton = document.querySelector('#thirteenth-next');
 //cargo hold PRIZE level
 const cargoModal3 = document.querySelector('.cargo-modal3');
+const lootPrizeModal = document.querySelector('.loot2');
+const lootCrateButton3 = document.querySelector('#loot-locked3');
+
+
 
 
 
@@ -467,6 +476,10 @@ powerButton.addEventListener('click', () => {
     prizeModal.classList.add('open');
 })
 
+secretNote.addEventListener('click', () => {
+    reactorNoteModal.classList.add('open');
+})
+
 addReactorNote.addEventListener('click', () => {
     reactorNoteModal.classList.remove('open');
     reactorNote();
@@ -477,6 +490,11 @@ addPasswordNote.addEventListener('click', () => {
     commandPwModal.classList.remove('open');
     piscusPassword();
     console.log(`Here are your notes: ${player.supplies}`)
+})
+
+lootCrateButton1.addEventListener('click', () => {
+    lootNoNoModal.classList.add('open');
+    setTimeout(() => { lootNoNoModal.classList.remove('open'); }, 4000);
 })
 
 

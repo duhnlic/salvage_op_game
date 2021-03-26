@@ -288,33 +288,94 @@ body {
 
 .cargo-modal {
     @extend %modal-styles;
+    background-size: contain;
     display: none;
     flex-direction: column;
     align-items: center;
-    transform: translateX(-30);
+    transform: translateX(-10);
     padding: 4rem;
-    //     #sixth-next {
-    //         display: flex;
-    //         position: fixed;
-    //         // transform: translateY(1100%);
-    //         z-index: 2500;
-    //     }
+    #sixth-next {
+        display: flex;
+        position: fixed;
+        transform: translateY(1100%);
+        z-index: 2500;
+    }
     #cargo-message1 {
         display: flex;
         position: fixed;
-        transform: translateY(556%);
+        transform: translateY(1562%);
         color: whitesmoke;
         font-size: 2.5rem;
     }
-    //     #pirate1 {
-    //         z-index: 2000;
-    //     }
-    //     #loot {
-    //         z-index: 2000;
-    //     }
+    #secret-note {
+        display: flex;
+        position: fixed;
+        transform: translate(-220%, 245%);
+        height: 5rem;
+        width: 5rem;
+        z-index: 2500;
+        cursor: pointer;
+    }
+    .loot-locked {
+        display: flex;
+        position: fixed;
+        transform: translate(2147%, 3400%);
+        height: .5rem;
+        width: .7rem;
+        z-index: 2500;
+        cursor: pointer;
+    }
 }
 
 .cargo-modal.open {
+    display: flex;
+}
+
+#loot-message1 {
+    background-image: url(https://salvage-op.s3.us-east-2.amazonaws.com/panel-1-purp.png);
+    height: 35.5rem;
+    width: 54.5rem;
+    @extend %modal-styles;
+    transform: translateX(-30);
+    padding: 4rem;
+    #loot-message {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
+}
+
+#loot-message2 {
+    background-image: url(https://salvage-op.s3.us-east-2.amazonaws.com/panel-1-green.png);
+    height: 35.5rem;
+    width: 54.5rem;
+    @extend %modal-styles;
+    transform: translateX(-30);
+    padding: 4rem;
+    #loot-message-win {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
+}
+
+.loot1 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2500;
+}
+
+.loot1.open {
+    display: flex;
+}
+
+.loot2 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2500;
+}
+
+.loot2.open {
     display: flex;
 }
 
@@ -419,7 +480,7 @@ body {
 
 .galley-modal {
     @extend %modal-styles;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     transform: translateX(-30);
