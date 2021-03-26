@@ -288,7 +288,6 @@ body {
 
 .cargo-modal {
     @extend %modal-styles;
-    background-size: contain;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -399,6 +398,22 @@ body {
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    #drone1 {
+        display: none;
+        position: fixed;
+        transform: translate(140%, 275%);
+        height: 5rem;
+        width: 5rem;
+        z-index: 2500;
+    }
+    #engineering-dialog {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
+}
+
+#drone1.open {
+    display: flex;
 }
 
 .engineering-modal.open {
@@ -433,6 +448,15 @@ body {
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    .loot-locked {
+        display: flex;
+        position: fixed;
+        transform: translate(2147%, 3200%);
+        height: .5rem;
+        width: .7rem;
+        z-index: 2500;
+        cursor: pointer;
+    }
 }
 
 .cargo-modal2.open {
@@ -446,6 +470,10 @@ body {
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    #d3-text {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
 }
 
 .crew3-modal.open {
@@ -472,6 +500,15 @@ body {
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    #health-regen {
+        display: flex;
+        position: fixed;
+        transform: translate(-5%, 30%);
+        height: 5rem;
+        width: 5rem;
+        z-index: 2500;
+        cursor: pointer;
+    }
 }
 
 .crew1-modal.open {
@@ -485,6 +522,19 @@ body {
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    #pw-note {
+        display: flex;
+        position: fixed;
+        transform: translate(-40%, 155%);
+        height: 5rem;
+        width: 5rem;
+        z-index: 2500;
+        cursor: pointer;
+    }
+    #galley-dialog {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
 }
 
 .galley-modal.open {
@@ -506,11 +556,27 @@ body {
 
 .command-modal {
     @extend %modal-styles;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    #drone3 {
+        display: none;
+        position: fixed;
+        transform: translate(165%, 300%);
+        height: 5rem;
+        width: 5rem;
+        z-index: 2500;
+    }
+    #command-dialog {
+        color: whitesmoke;
+        font-size: 2.5rem;
+    }
+}
+
+#drone3.open {
+    display: flex;
 }
 
 .command-modal.open {
@@ -532,6 +598,15 @@ body {
     align-items: center;
     transform: translateX(-30);
     padding: 4rem;
+    .loot-locked {
+        display: flex;
+        position: fixed;
+        transform: translate(2147%, 3400%);
+        height: .5rem;
+        width: .7rem;
+        z-index: 2500;
+        cursor: pointer;
+    }
 }
 
 .cargo-modal3.open {

@@ -37,6 +37,10 @@ const lootNoNoModal = document.querySelector('.loot1')
     //engineering level
 const engineeringModal = document.querySelector('.engineering-modal');
 const seventhNextButton = document.querySelector('#seventh-next');
+const drone1 = document.querySelector('#drone1');
+const reactor = document.querySelector('#reactor');
+const lifeSupport = document.querySelector('#life-support');
+const engineeringDialog = document.querySelector('#engineering-dialog');
 //cargo level 2
 const cargoModal2 = document.querySelector('.cargo-modal2');
 const eigthNextButton = document.querySelector('#eigth-next');
@@ -48,26 +52,28 @@ const ninthNextButton = document.querySelector('#ninth-next');
 //crew deck 2 level
 const crew2Modal = document.querySelector('.crew2-modal');
 const tenthNextButton = document.querySelector('#tenth-next');
+const drone2 = document.querySelector('#drone2');
 //crew deck 1 level
 const crew1Modal = document.querySelector('.crew1-modal');
 const eleventhNextButton = document.querySelector('#eleventh-next');
+const healthButton = document.querySelector('#health-regen');
 //galley level
 const galleyModal = document.querySelector('.galley-modal');
 const twelfthNextButton = document.querySelector('#twelfth-next');
 const commandPwModal = document.querySelector('.command-password-modal');
 const addPasswordNote = document.querySelector('#password-note-add');
+const secretPw = document.querySelector('#pw-note');
 //command Deck level
 const commandModal = document.querySelector('.command-modal');
 const powerButton = document.querySelector('#power-button');
 const prizeModal = document.querySelector('.prize-button-modal');
 const thirteenthNextButton = document.querySelector('#thirteenth-next');
-//cargo hold PRIZE level
+const drone3 = document.querySelector('#drone3');
+const cmdDialog = document.querySelector('#command-dialog')
+    //cargo hold PRIZE level
 const cargoModal3 = document.querySelector('.cargo-modal3');
 const lootPrizeModal = document.querySelector('.loot2');
 const lootCrateButton3 = document.querySelector('#loot-locked3');
-
-
-
 
 
 
@@ -145,11 +151,11 @@ class Drone {
 }
 
 //create my enemies
-const drone1 = new Drone('drone1');
-const drone2 = new Drone('drone2');
-const drone3 = new Drone('drone3');
+const drone_1 = new Drone('drone1');
+const drone_2 = new Drone('drone2');
+const drone_3 = new Drone('drone3');
 
-let droneArray = [drone1, drone2, drone3];
+let droneArray = [drone_1, drone_2, drone_3];
 
 //create bonus enemy
 // const pirateShip = {
@@ -171,13 +177,6 @@ const sideArm = new Weapon('Walther P88 Compact', '30');
 const shockBaton = new Weapon('Shock Baton', '20');
 
 
-
-
-
-
-
-
-
 //test
 player.weapons.push(shockBaton);
 console.log(player.weapons[0].hitpoints)
@@ -195,6 +194,9 @@ const playerBattleCore = () => {
                 battleDialog1.innerHTML = (`You've survived`)
                 droneArray.shift();
                 setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
+                setTimeout(() => { drone1.classList.add('open'); }, 1000);
+                setTimeout(() => { drone2.classList.add('open'); }, 1000);
+                setTimeout(() => { drone3.classList.add('open'); }, 1000);
             } else {
                 battleDialog1.innerHTML = (`It's a Hit! Drone is at ${droneArray[0].health} HP`);
             }
@@ -213,7 +215,7 @@ const aiBattleCore = () => {
         if (diceRoll() >= 6) {
             player.health = (player.health - droneArray[0].hitpoints);
             //check health
-            if ((player.health < droneArray[0].health) && (player.health >= 0)) {
+            if ((droneArray[0].health > player.health) && (player.health <= 0)) {
                 battleDialog2.innerHTML = (`You Are Dead. Game Over!`)
                 setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
                 setTimeout(() => { resetGame(); }, 1000);
@@ -250,7 +252,7 @@ const healthRegen = () => {
         player.health = 100
         console.log(`Oh Thank God! You've found a med-kit! Your health is now at ${player.health} HP`)
     } else {
-        consnsole.log(`You already have full health.`)
+        console.log(`You already have full health.`)
     }
 }
 
@@ -318,19 +320,16 @@ const picusPassword = () => {
 // Randomly, at anytime while going from room to room in the main shaft, the player may encounter the attack drone. 
 // Potentially battling has it’s own atmospheric music.
 
+// IF player in Airlock,
+//show airlock div 
+//show 'to cargo hold' button
 
-const gameCore = () => {
-    // IF player in Airlock,
-    //show airlock div 
-    //show 'to cargo hold' button
+// IF player in Cargo Hold, player encounters 2 dead pirates and the LOOT of the game.
+//show pirate div
+//show <p>
+// loot is only accessible if the ship’s power is on. 
+//Potentially one of the pirates has a PW on them for powering up the reactor
 
-    // IF player in Cargo Hold, player encounters 2 dead pirates and the LOOT of the game.
-    //show pirate div
-    //show <p>
-    // loot is only accessible if the ship’s power is on. 
-    //Potentially one of the pirates has a PW on them for powering up the reactor
-
-}
 
 
 
@@ -379,6 +378,11 @@ const gameCore = () => {
 
 //EVENT LISTENERS
 
+const resetDroneImages = () => {
+    drone1.classList.remove('open');
+    drone2.classList.remove('open');
+    drone3.classList.remove('open');
+}
 
 initButton.addEventListener('click', () => {
     initMenu.classList.add('close');
@@ -437,6 +441,7 @@ sixthNextButton.addEventListener('click', () => {
 
 seventhNextButton.addEventListener('click', () => {
     engineeringModal.classList.remove('open');
+    resetDroneImages();
     cargoModal2.classList.add('open');
 })
 
@@ -453,6 +458,7 @@ ninthNextButton.addEventListener('click', () => {
 
 tenthNextButton.addEventListener('click', () => {
     crew2Modal.classList.remove('open');
+    resetDroneImages();
     crew1Modal.classList.add('open');
 })
 
@@ -474,6 +480,7 @@ thirteenthNextButton.addEventListener('click', () => {
 
 powerButton.addEventListener('click', () => {
     prizeModal.classList.add('open');
+    cmdDialog.innerHTML = (`Now that the power is on, you can go get the loot!`)
 })
 
 secretNote.addEventListener('click', () => {
@@ -488,20 +495,41 @@ addReactorNote.addEventListener('click', () => {
 
 addPasswordNote.addEventListener('click', () => {
     commandPwModal.classList.remove('open');
-    piscusPassword();
+    picusPassword();
     console.log(`Here are your notes: ${player.supplies}`)
 })
 
 lootCrateButton1.addEventListener('click', () => {
     lootNoNoModal.classList.add('open');
-    setTimeout(() => { lootNoNoModal.classList.remove('open'); }, 4000);
+    setTimeout(() => { lootNoNoModal.classList.remove('open'); }, 6000);
 })
 
+reactor.addEventListener('click', () => {
+    engineeringDialog.innerHTML = (`The Reactor is back online. You still have to turn on the power from the Command Deck.`)
+})
+
+lifeSupport.addEventListener('click', () => {
+    engineeringDialog.innerHTML = (`Life Support is in Stand-by and will cycle on once the power is restored.`)
+})
+
+lootCrateButton2.addEventListener('click', () => {
+    lootNoNoModal.classList.add('open');
+    setTimeout(() => { lootNoNoModal.classList.remove('open'); }, 6000);
+})
+
+
+
+
+healthButton.addEventListener('click', healthRegen);
+
+secretPw.addEventListener('click', () => {
+    commandPwModal.classList.add('open');
+})
 
 attackDrone.addEventListener('click', battleCore);
 
 //reset game function
-const droneArrayIndex = [drone1, drone2, drone3];
+const droneArrayIndex = [drone_1, drone_2, drone_3];
 const resetGame = () => {
     commandModal.classList.remove('open');
     galleyModal.classList.remove('open');
@@ -525,6 +553,7 @@ const resetGame = () => {
     introModal.classList.remove('open');
     videobgModal.classList.remove('close');
     gameMenuModal.classList.add('open');
+    resetDroneImages();
     //play menu music
     player.health = 100;
     player.supplies = [];
