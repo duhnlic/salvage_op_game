@@ -61,16 +61,16 @@ body {
   justify-content: center;
   width: 45rem;
   padding: 5rem 0 0 0;
-  margin-left: 17.2rem;
+  margin-left: 12.6rem;
   z-index: 9000;
 }
 .init-menu-modal .init-button {
   background-color: #6b0303;
   padding: 2.5rem 3rem 2.5rem 3rem;
-  margin: 0 10rem 10rem 10rem;
+  margin: 0 20rem 10rem 10rem;
   transform: translateX(6%);
   cursor: pointer;
-  font-size: 7.6rem;
+  font-size: 5.85rem;
   text-shadow: -0.1rem 0.1rem 0.4rem #000, 0.1rem 0.1rem 0.4rem #000, 0.1rem -0.1rem 0.4rem #000, -0.1rem -0.1rem 0.4rem #000;
   letter-spacing: 0.65rem;
   color: #e4e4e4;
@@ -88,8 +88,7 @@ body {
   background-position: center;
   display: none;
   z-index: 9000;
-  transform: translateX(10%);
-  transform: translateY(-50%);
+  transform: translate(-3%, -50%);
 }
 .game-menu-modal .main-menu {
   display: flex;

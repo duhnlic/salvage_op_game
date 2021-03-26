@@ -45,17 +45,17 @@ body {
         justify-content: center;
         width: 45rem;
         padding: 5rem 0 0 0;
-        margin-left: 17.2rem;
+        margin-left: 12.6rem;
         z-index: 9000;
     }
     .init-button {
         background-color: rgb(107, 3, 3);
         padding: 2.5rem 3rem 2.5rem 3rem;
-        margin: 0 10rem 10rem 10rem;
+        margin: 0 20rem 10rem 10rem;
         // margin-right: 45rem;
         transform: translateX(6%);
         cursor: pointer;
-        font-size: 7.6rem;
+        font-size: 5.85rem;
         text-shadow: -.1rem .1rem .4rem #000, .1rem .1rem .4rem #000, .1rem -.1rem .4rem #000, -.1rem -.1rem .4rem #000;
         letter-spacing: .65rem;
         color: rgb(228, 228, 228);
@@ -76,8 +76,8 @@ body {
     @extend %modal-styles;
     display: none;
     z-index: 9000;
-    transform: translateX(10%);
-    transform: translateY(-50%);
+    transform: translate(-3%, -50%);
+    // transform: translateY(-50%);
     .main-menu {
         display: flex;
         flex-direction: column;
