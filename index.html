@@ -4,6 +4,8 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Racing+Sans+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Salvage Op: An Expanse RPG Game</title>
@@ -13,6 +15,15 @@
 </head>
 
 <body>
+    <audio id="menu-audio" loop> 
+        <source src="https://salvage-op.s3.us-east-2.amazonaws.com/Dream+2+(Ambience).mp3" type="audio/ogg">
+    </audio>
+    <audio id="game-audio" loop> 
+        <source src="https://salvage-op.s3.us-east-2.amazonaws.com/purplelegacy.mp3" type="audio/ogg">
+    </audio>
+    <audio id="fight-audio" loop> 
+        <source src="https://salvage-op.s3.us-east-2.amazonaws.com/PetterTheSturgeon+-+Last_Knight_Of_The_CyberDeath.mp3" type="audio/ogg">
+    </audio>
     <!-- <div class="test">
         <button class="test-button">ARE YOU SMART OR DUMB -CLICK TO FIND OUT-</button>
     </div> -->
@@ -62,24 +73,24 @@
     <div id="ship-scan" class="ship-scan-modal">
         <img src="https://media.giphy.com/media/4GZZWM59sXna6YI76E/source.gif" alt="" srcset="">
         <div class="results-modal">
-            <div id="scan-result1">
-                <p>The other ship is about 30 meters long. It clearly has a drive cone for an Epstein drive. It also has a torpedo launcher and point defense cannons, meaning it is either a military, security or pirate ship, since civilian ships don’t mount
+            <div>
+                <p id="scan-result1">The other ship is about 30 meters long. It clearly has a drive cone for an Epstein drive. It also has a torpedo launcher and point defense cannons, meaning it is either a military, security or pirate ship, since civilian ships don’t mount
                     such weapons.</p>
             </div>
-            <div id="scan-result2">
-                <p>There is no registry, name, or related markings on the ship’s hull and no active transponder signal; it could be damage, or it could be offline. The lack of registry markings suggests the ship is a smuggler or pirate.</p>
+            <div>
+                <p id="scan-result2">There is no registry, name, or related markings on the ship’s hull and no active transponder signal; it could be damage, or it could be offline. The lack of registry markings suggests the ship is a smuggler or pirate.</p>
             </div>
-            <div id="scan-result3">
-                <p>There are no heat readings coming from the ship, and other energy readings suggest the ship’s reactor is shut down.</p>
+            <div>
+                <p id="scan-result3">There are no heat readings coming from the ship, and other energy readings suggest the ship’s reactor is shut down.</p>
             </div>
-            <div id="scan-result4">
-                <p>Any efforts to hail the ship by radio or tight-beam transmission return no response.</p>
+            <div>
+                <p id="scan-result4">Any efforts to hail the ship by radio or tight-beam transmission return no response.</p>
             </div>
             <button id="third-next">Investigate Unknown Craft</button>
         </div>
     </div>
     <div class="eva-modal">
-        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/Ship_diagramm.png" height="400" width="150" alt="">
+        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/Ship_diagramm.png" height="800" width="350" alt="">
         <p id="eva-description">You suit up, grab your company issue Shock Baton and E.V.A. to the ghost ship. You have open the door manually open the external and internal airlock doors.</p>
         <button id='fourth-next'>Board Unknown Craft</button>
     </div>
@@ -123,21 +134,21 @@
             <img src="https://salvage-op.s3.us-east-2.amazonaws.com/empty.png" height="50" width="50" alt="">
         </div>
         <button id="eleventh-next">To Galley</button>
-        <p></p>
+        <p id="d1-text">This Deck appears to be empty...?</p>
     </div>
     <div class="crew2-modal">
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/crew_deck_2.png" height="420" width="570" alt="" class="">
-        <div id="drone2">
+        <!-- <div id="drone2">
             <img src="https://salvage-op.s3.us-east-2.amazonaws.com/drone_dead.png" height="75" width="100" alt="" srcset="">
-        </div>
+        </div> -->
         <button id="tenth-next">To Crew Deck 1</button>
-        <p></p>
+        <p id="d2-text"></p>
 
     </div>
     <div class="crew3-modal">
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/crew_deck_3.png" height="420" width="570" alt="" class="">
         <button id="ninth-next">To Crew Deck 2</button>
-        <p id="d3-text">This Deck Appears to be empty...?</p>
+        <p id="d3-text">This Deck appears to be empty...?</p>
 
 
     </div>
@@ -145,7 +156,7 @@
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/lukasz-jaskolski-exploration-encounters-final-2.jpeg" height="420" width="570" alt="" class="">
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/airlocks.png" height="400" width="550" alt="" class="">
         <button id="fifth-next">To Cargo Hold</button>
-        <p>The Reactor is off, so there is no Life Support. You have to keep your EVA suit on. This room is Empty </p>
+        <p id="airlocks-text">The Reactor is off, so there is no Life Support. You have to keep your EVA suit on. You see what looks to be debris all over.</p>
 
     </div>
     <div id="loot-message1" class="loot1">
@@ -164,7 +175,7 @@
 
         </div>
         <button id="sixth-next">To Engineering</button>
-        <p id="cargo-message1">This is where the loot is. Check that dead pirate.</p>
+        <p id="cargo-message1">You see bodies floating on one side of the room and expensive black market Martian military crates. SCORE! But one of them appears to be opened; something is missing... Maybe one of the bodies has a clue.</p>
     </div>
     <div class="cargo-modal2">
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="520" width="660" alt="" class="">
@@ -178,7 +189,7 @@
         <button id="eigth-next">To Crew Deck 3</button>
     </div>
     <div class="cargo-modal3">
-        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="420" width="570" alt="" class="">
+        <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold.png" height="520" width="660" alt="" class="">
         <div id="pirate-2">
 
         </div>
@@ -186,8 +197,8 @@
             <img src="https://salvage-op.s3.us-east-2.amazonaws.com/cargo_hold_loot.png" height="70" width="90" alt="">
 
         </div>
-        <button id="Take-loot">Take loot</button>
-        <p id="cargo-message2">You can access the loot now.</p>
+        <!-- <button id="Take-loot">Take loot</button>
+        <p id="cargo-message2">You can access the loot now.</p> -->
     </div>
     <div class="engineering-modal">
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/engineering.png" height="420" width="570" alt="" class="">
@@ -202,7 +213,7 @@
     </div>
     <div class="reactor-startup-modal">
         <img src="https://salvage-op.s3.us-east-2.amazonaws.com/scroll.png" height="500" width="500" alt="" class="">
-        <p></p>
+        <p id="carl-note">You Idiots! How many times do I have to tell you, Life Support cannot be turned on unless its already in stand-by mode before we turn on the Reactor! If you guys break the system, you can pay for it! -Carl</p>
         <button id="reactor-note-add">Add To Inventory</button>
     </div>
     <div class="command-password-modal">
@@ -210,7 +221,6 @@
         <p></p>
         <button id="password-note-add">Add To Inventory</button>
     </div>
-
 
     <video id="video-bg" class="videobg-modal" poster="" autoplay muted loop>
         <source src="https://salvage-op.s3.us-east-2.amazonaws.com/The_Expanse_RPG_Background.m4v" type="video/mp4">

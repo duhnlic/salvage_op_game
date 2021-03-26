@@ -52,7 +52,7 @@ const ninthNextButton = document.querySelector('#ninth-next');
 //crew deck 2 level
 const crew2Modal = document.querySelector('.crew2-modal');
 const tenthNextButton = document.querySelector('#tenth-next');
-const drone2 = document.querySelector('#drone2');
+// const drone2 = document.querySelector('#drone2');
 //crew deck 1 level
 const crew1Modal = document.querySelector('.crew1-modal');
 const eleventhNextButton = document.querySelector('#eleventh-next');
@@ -69,11 +69,15 @@ const powerButton = document.querySelector('#power-button');
 const prizeModal = document.querySelector('.prize-button-modal');
 const thirteenthNextButton = document.querySelector('#thirteenth-next');
 const drone3 = document.querySelector('#drone3');
-const cmdDialog = document.querySelector('#command-dialog')
-    //cargo hold PRIZE level
+const cmdDialog = document.querySelector('#command-dialog');
+//cargo hold PRIZE level
 const cargoModal3 = document.querySelector('.cargo-modal3');
 const lootPrizeModal = document.querySelector('.loot2');
-const lootCrateButton3 = document.querySelector('#loot-locked3');
+const lootCrateButton3 = document.querySelector('.loot-win');
+//audio units
+const menuAudio = document.querySelector('#menu-audio');
+const gameAudio = document.querySelector('#game-audio');
+const fightAudio = document.querySelector('#fight-audio');
 
 
 
@@ -194,14 +198,17 @@ const playerBattleCore = () => {
                 battleDialog1.innerHTML = (`You've survived`)
                 droneArray.shift();
                 setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
+                setTimeout(() => { fightAudio.pause(); }, 1000);
+                setTimeout(() => { fightAudio.currentTime = 0; }, 1000);
+                setTimeout(() => { gameAudio.play(); }, 1000);
                 setTimeout(() => { drone1.classList.add('open'); }, 1000);
-                setTimeout(() => { drone2.classList.add('open'); }, 1000);
+                // setTimeout(() => { drone2.classList.add('open'); }, 1000);
                 setTimeout(() => { drone3.classList.add('open'); }, 1000);
             } else {
                 battleDialog1.innerHTML = (`It's a Hit! Drone is at ${droneArray[0].health} HP`);
             }
         } else {
-            battleDialog1.innerHTML = (`You missed! Fuck!`)
+            battleDialog1.innerHTML = (`You missed! Crap!`)
         }
     } 
 }
@@ -218,6 +225,8 @@ const aiBattleCore = () => {
             if ((droneArray[0].health > player.health) && (player.health <= 0)) {
                 battleDialog2.innerHTML = (`You Are Dead. Game Over!`)
                 setTimeout(() => { battleModal1.classList.remove('open'); }, 1000);
+                setTimeout(() => { fightAudio.pause(); }, 1000);
+                setTimeout(() => { fightAudio.currentTime = 0; }, 1000);
                 setTimeout(() => { resetGame(); }, 1000);
             } else {
                 battleDialog2.innerHTML = (`Ouch! You're hit! Your health is at ${player.health} HP`);
@@ -248,10 +257,11 @@ const battleCore = () => {
 
 //create a function for my hidden health regeneration
 const healthRegen = () => {
-    if (player.heath < 100) {
+    console.log(`${player.health}`)
+    if (player.heath <= 99) {
         player.health = 100
         console.log(`Oh Thank God! You've found a med-kit! Your health is now at ${player.health} HP`)
-    } else {
+    } else if (player.health = 100) {
         console.log(`You already have full health.`)
     }
 }
@@ -380,20 +390,23 @@ const picusPassword = () => {
 
 const resetDroneImages = () => {
     drone1.classList.remove('open');
-    drone2.classList.remove('open');
+    // drone2.classList.remove('open');
     drone3.classList.remove('open');
 }
 
 initButton.addEventListener('click', () => {
     initMenu.classList.add('close');
     setTimeout(() => { gameMenuModal.classList.add('open'); }, 350);
+    setTimeout(() => { menuAudio.play(); }, 350);
     //play menu music
 })
 
 startButton.addEventListener('click', () => {
     gameMenuModal.classList.remove('open');
     setTimeout(() => { videobgModal.classList.add('close'); }, 350);
-    setTimeout(() => { introModal.classList.add('open'); }, 500);
+    setTimeout(() => { gameAudio.play(); }, 350);
+    setTimeout(() => { menuAudio.pause(); }, 350);
+    setTimeout(() => { introModal.classList.add('open'); }, 1200);
     ceresModal.classList.add('open');
     introTextModal1.classList.add('open');
 
@@ -435,6 +448,9 @@ fifthNextButton.addEventListener('click', () => {
 
 sixthNextButton.addEventListener('click', () => {
     battleModal1.classList.add('open');
+    gameAudio.pause();
+    gameAudio.currentTime = 0;
+    fightAudio.play();
     cargoModal.classList.remove('open');
     engineeringModal.classList.add('open');
 })
@@ -468,6 +484,9 @@ eleventhNextButton.addEventListener('click', () => {
 })
 
 twelfthNextButton.addEventListener('click', () => {
+    gameAudio.pause();
+    gameAudio.currentTime = 0;
+    fightAudio.play();
     galleyModal.classList.remove('open');
     commandModal.classList.add('open');
     battleModal1.classList.add('open');
@@ -526,11 +545,18 @@ secretPw.addEventListener('click', () => {
     commandPwModal.classList.add('open');
 })
 
+lootCrateButton3.addEventListener('click', () => {
+    lootPrizeModal.classList.add('open');
+    setTimeout(() => { lootPrizeModal.classList.remove('open'); }, 7000)
+    setTimeout(() => { resetGame(); }, 7500);
+})
+
 attackDrone.addEventListener('click', battleCore);
 
 //reset game function
 const droneArrayIndex = [drone_1, drone_2, drone_3];
 const resetGame = () => {
+    cargoModal3.classList.remove('open');
     commandModal.classList.remove('open');
     galleyModal.classList.remove('open');
     crew1Modal.classList.remove('open');
@@ -554,11 +580,13 @@ const resetGame = () => {
     videobgModal.classList.remove('close');
     gameMenuModal.classList.add('open');
     resetDroneImages();
-    //play menu music
+    gameAudio.pause();
+    menuAudio.currentTime = 0;
+    gameAudio.currentTime = 0;
+    fightAudio.currentTime = 0;
+    menuAudio.play();
     player.health = 100;
     player.supplies = [];
     player.weapons = [];
     droneArray = droneArrayIndex;
-    //set the start time of every audio track used to 0:00:00
-
 }

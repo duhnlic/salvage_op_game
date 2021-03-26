@@ -1,4 +1,5 @@
 body button {
+  font-family: "Share Tech Mono", monospace;
   padding: 1.2rem 1rem;
   border-radius: 0.7rem;
   text-transform: uppercase;
@@ -7,6 +8,7 @@ body button {
 }
 
 .cargo-modal3, .command-modal, .command-password-modal, .galley-modal, .crew1-modal, .crew2-modal, .crew3-modal, .cargo-modal2, .battle-modal1, .engineering-modal, .reactor-startup-modal, #loot-message2, #loot-message1, .cargo-modal, .airlocks-modal, .eva-modal, .ship-scan-modal, .start-ship-modal, .intro-text-modal2, .intro-text-modal1, .intro-modal, .game-menu-modal {
+  font-family: "Share Tech Mono", monospace;
   height: 43.5rem;
   width: 62.5rem;
   text-align: center;
@@ -51,7 +53,7 @@ body {
   right: 0;
   margin: 0 auto;
   z-index: 9500;
-  display: none;
+  display: flex;
   flex-direction: column;
 }
 .init-menu-modal #game-logo {
@@ -68,7 +70,7 @@ body {
   margin: 0 10rem 10rem 10rem;
   transform: translateX(6%);
   cursor: pointer;
-  font-size: 8rem;
+  font-size: 7.6rem;
   text-shadow: -0.1rem 0.1rem 0.4rem #000, 0.1rem 0.1rem 0.4rem #000, 0.1rem -0.1rem 0.4rem #000, -0.1rem -0.1rem 0.4rem #000;
   letter-spacing: 0.65rem;
   color: #e4e4e4;
@@ -129,6 +131,7 @@ body {
   width: 70rem;
   z-index: 8500;
   display: none;
+  transform: translateY(-60%);
 }
 .intro-modal .intro-screen {
   display: flex;
@@ -173,11 +176,14 @@ body {
 }
 
 .intro-text-modal1 {
-  text-align: start;
+  text-align: center;
   height: 20rem;
   width: 60rem;
-  transform: translateY(75%);
   display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-3%, 38%);
+  padding: 4rem;
 }
 .intro-text-modal1 #start-dialog {
   color: whitesmoke;
@@ -185,23 +191,26 @@ body {
 }
 
 .intro-text-modal1.open {
-  display: block;
+  display: flex;
 }
 
 .intro-text-modal2 {
-  text-align: start;
+  text-align: center;
   height: 20rem;
   width: 60rem;
-  transform: translateY(75%);
   display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(3%, 30%);
+  padding: 4rem;
 }
 .intro-text-modal2 #start-dialog-cont {
   color: whitesmoke;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .intro-text-modal2.open {
-  display: block;
+  display: flex;
 }
 
 .ship-gif-modal {
@@ -214,17 +223,23 @@ body {
 
 .start-ship-modal {
   display: none;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-25%);
+  transform: translateY(-50%);
+  padding: 4rem;
 }
 
 .start-ship-modal.open {
-  display: block;
+  display: flex;
 }
 
 .ship-scan-modal {
   display: none;
   flex-direction: column;
   align-items: center;
-  transform: translateX(-30);
+  transform: translateX(-75);
+  transform: translateY(-75%);
   padding: 4rem;
 }
 
@@ -236,24 +251,24 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  height: 15rem;
-  width: 60rem;
+  height: 55rem;
+  width: 95rem;
 }
 .results-modal #scan-result1 {
   color: whitesmoke;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .results-modal #scan-result2 {
   color: whitesmoke;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .results-modal #scan-result3 {
   color: whitesmoke;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .results-modal #scan-result4 {
   color: whitesmoke;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .results-modal.open {
@@ -265,6 +280,7 @@ body {
   flex-direction: column;
   align-items: center;
   transform: translateX(-30);
+  transform: translateY(-85%);
   padding: 4rem;
 }
 .eva-modal #eva-description {
@@ -281,7 +297,12 @@ body {
   flex-direction: column;
   align-items: center;
   transform: translateX(-30);
+  transform: translateY(-80%);
   padding: 4rem;
+}
+.airlocks-modal #airlocks-text {
+  color: whitesmoke;
+  font-size: 2.3rem;
 }
 
 .airlocks-modal.open {
@@ -304,7 +325,7 @@ body {
 .cargo-modal #cargo-message1 {
   display: flex;
   position: fixed;
-  transform: translateY(1562%);
+  transform: translateY(320%);
   color: whitesmoke;
   font-size: 2.5rem;
 }
@@ -384,6 +405,13 @@ body {
   transform: translateX(-30);
   padding: 4rem;
 }
+.reactor-startup-modal #carl-note {
+  z-index: 2500;
+  width: 55rem;
+  transform: translateY(-40);
+  color: whitesmoke;
+  font-size: 1.7rem;
+}
 
 .reactor-startup-modal.open {
   display: flex;
@@ -431,6 +459,16 @@ body {
 }
 .battle-modal1 #attack-drone {
   cursor: crosshair;
+}
+.battle-modal1 #battle-dialog1 {
+  font-family: "Racing Sans One", cursive;
+  color: whitesmoke;
+  font-size: 2rem;
+}
+.battle-modal1 #battle-dialog2 {
+  font-family: "Racing Sans One", cursive;
+  color: whitesmoke;
+  font-size: 2rem;
 }
 
 .battle-modal1.open {
@@ -481,6 +519,10 @@ body {
   transform: translateX(-30);
   padding: 4rem;
 }
+.crew2-modal #d2-text {
+  color: whitesmoke;
+  font-size: 2.5rem;
+}
 
 .crew2-modal.open {
   display: flex;
@@ -501,6 +543,10 @@ body {
   width: 5rem;
   z-index: 2500;
   cursor: pointer;
+}
+.crew1-modal #d1-text {
+  color: whitesmoke;
+  font-size: 2.5rem;
 }
 
 .crew1-modal.open {
@@ -525,7 +571,7 @@ body {
 }
 .galley-modal #galley-dialog {
   color: whitesmoke;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .galley-modal.open {
@@ -545,7 +591,7 @@ body {
 }
 
 .command-modal {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   transform: translateX(-30);
@@ -587,10 +633,10 @@ body {
   transform: translateX(-30);
   padding: 4rem;
 }
-.cargo-modal3 .loot-locked {
+.cargo-modal3 .loot-win {
   display: flex;
   position: fixed;
-  transform: translate(2147%, 3400%);
+  transform: translate(2147%, 3340%);
   height: 0.5rem;
   width: 0.7rem;
   z-index: 2500;

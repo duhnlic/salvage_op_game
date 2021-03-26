@@ -1,4 +1,5 @@
 %button-styles {
+    font-family: 'Share Tech Mono', monospace;
     padding: 1.2rem 1rem;
     border-radius: .7rem;
     text-transform: uppercase;
@@ -12,6 +13,7 @@
 }
 
 %modal-styles {
+    font-family: 'Share Tech Mono', monospace;
     height: 43.5rem;
     width: 62.5rem;
     text-align: center;
@@ -22,3 +24,5 @@
     right: 0;
     margin: 0 auto;
 }
+
+// font-family: 'Major Mono Display', monospace;
